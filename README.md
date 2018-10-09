@@ -4,6 +4,14 @@ Proyecto de prácticas para la asignatura Cloud Computing del Máster en Ingenie
 
 ### Autor: Luis Gallego Quero
 
-#### Proyecto a desarrollar
+# Proyecto a desarrollar
 
 El proyecto que se realizará está aún por determinar.
+
+### Descripción
+
+Aún por determinar
+
+### Referencias
+
+Sin referencias todavía.
