@@ -6,5 +6,5 @@ Proyecto de prácticas para la asignatura Cloud Computing del Máster en Ingenie
 
 # Proyecto a desarrollar
 
-Módulo de gestión de contabilidad. 
+Módulo de gestión de contabilidad. Se puede consultar toda la información [aquí](https://luiisgallego.github.io/MII_CC_1819/).
 
