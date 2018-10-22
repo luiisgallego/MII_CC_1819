@@ -6,12 +6,5 @@ Proyecto de prácticas para la asignatura Cloud Computing del Máster en Ingenie
 
 # Proyecto a desarrollar
 
-El proyecto que se realizará está aún por determinar.
+Módulo de gestión de contabilidad. 
 
-### Descripción
-
-Aún por determinar
-
-### Referencias
-
-Sin referencias todavía.
