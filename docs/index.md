@@ -21,7 +21,7 @@ Utilizaremos una arquitectura basada en microservicios. Una de las razones funda
 En principio, se implementará un microservicio para el insertado/borrado de los elementos del inventario. Otro microservicio para la generación de facturas en función de los servicios prestados y los elementos del inventario vendidos. Finalmente se podría implementar también un microservicio que genere balances tanto semanales como mensuales.
 
 ### Back-end
-Para su implementación usaremos Node.js bajo el framework Express.js y como base de datos, MongoDB.
+Para su implementación usaremos Node.js bajo el framework Express.js y como base de datos, MongoDB..
 
 ### Licencia
 
