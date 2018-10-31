@@ -18,7 +18,7 @@ Este módulo nos permitirá tener una primera versión de un inventario de produ
 
 En el desarrollo de contabilidad de una empresa hay gran cantidad de variables que controlar, desde la compra de inventario básico a una fábrica, su posterior venta con los beneficios obtenidos pasando por el gasto diario que se genera en la empresa y un largo etcetera.
 
-Con la realización de este módulo llegaremos a establecer una primera versión que controle el anterior problema. 
+Con la realización de este módulo llegaremos a establecer una primera versión que controle el anterior problema. Para ello nos centraremos en desarrollar un sistema que nos permita introducir los datos cliente junto con la información de los items de la factura y su precio, generando el documento final correspondiente. 
 
 # Tecnologías del proyecto
 
@@ -26,34 +26,21 @@ Con la realización de este módulo llegaremos a establecer una primera versión
 
 Para evolucionar el ERP y desarrollo de la asignatura utilizaremos una arquitectura basada en microservicios. Una de las razones fundamentales es que el proyecto inicial nació para estar en la web y ser usado por diferentes usuarios a la vez, de esta manera, con los microservicios podremos mantener un sistema estable y bien escalado.
 
-En principio, se implementará un microservicio para el insertado/borrado de los elementos del inventario. Otro microservicio para la generación de facturas en función de los servicios prestados y los elementos del inventario vendidos. Finalmente se podría implementar también un microservicio que genere balances tanto semanales como mensuales.
+### Microservicios
 
-### Microservicios (LISTADO)
+Como microservicios a desarrollar encontramos los siguientes:
 
-- Leer datos (formulario o JSON)
-- BD
-- Documento
-- Todos los microservicios tienen que ser pasados a un log y al broker (nexo de unión - conexion de microservicios) RabbitMQ
-
-
-- Desarollo lógico:
-	- Entrada de datos (Formulario) => Datos cliente e items vendidos
-		- Diferenciación entre solo almacenar datos o generar documento
-	- Inserción de datos en una BD => Datos cliente
-	- Mensaje de okey o generación de documento
-
+- Lectura de datos. Esta lectura se puede generar desde un formulario en el caso de crear una interfaz o desde un archivo JSON, estableciendo dichos datos previamente. A la hora de la lectura indicaremos si queremos generar una factura o simplemente guardar la información.
+- Inserción en una base de datos.
+- Consulta en una base de datos.
+- Generación de la factura si se ha indicado o un mensaje de estado en caso contrario.
+- Escritura en un log.
 
 ### Back-end
-Para su implementación usaremos Node.js bajo el framework Express.js y como base de datos, MongoDB.
 
-- Lenguaje principal y framework
-- BD
-- Test (Travis-CI)
+Para su implementación usaremos como lenguaje principal Node.js bajo el framework Express.js. Como base de datos, MongoDB. Además, nos basaremos en un desarrollo mediante test, usando para ello Travis-CI. El nexo de unión entre los distintos microservicios será llevado a cabo mediante el broker RabbitMQ.
 
-- Despligue: 
-	- Contenedor: Docker
-	- Plataforma de despligue: Heroku?
-
+Finalmente, indicar que utilizaremos como contenedor Docker y como plataforma de despliegue Heroku.
 
 ### Licencia
 
