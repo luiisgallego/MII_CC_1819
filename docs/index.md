@@ -26,15 +26,16 @@ Con la realización de este módulo llegaremos a establecer una primera versión
 
 Para evolucionar el ERP y desarrollo de la asignatura utilizaremos una arquitectura basada en microservicios. Una de las razones fundamentales es que el proyecto inicial nació para estar en la web y ser usado por diferentes usuarios a la vez, de esta manera, con los microservicios podremos mantener un sistema estable y bien escalado.
 
+Además, es una evolución lógica ya que el ERP inicial está basado en un arquitectura monolítica, concretamente MVC, la cual se volvió incosistente y difícilmente escalable.
+
 ### Microservicios
 
 Como microservicios a desarrollar encontramos los siguientes:
 
-- Lectura de datos. Esta lectura se puede generar desde un formulario en el caso de crear una interfaz o desde un archivo JSON, estableciendo dichos datos previamente. A la hora de la lectura indicaremos si queremos generar una factura o simplemente guardar la información.
-- Inserción en una base de datos.
-- Consulta en una base de datos.
-- Generación de la factura si se ha indicado o un mensaje de estado en caso contrario.
-- Escritura en un log.
+- Lectura de datos. Esta lectura se generará desde un formulario en el caso de crear una interfaz o desde un archivo JSON, estableciendo dichos datos previamente. 
+- Gestión de datos en la base de datos.
+- Generación de la factura.
+- Escritura en un log de los procesos generados en el sistema.
 
 ### Back-end
 
