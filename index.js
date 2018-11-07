@@ -1,7 +1,9 @@
+// Creamos las dependencias
 var express = require('express');
 var app = express();
 var items = require("./items.js");
 
+// Variables globales
 var almacenItems = new Object;
 var respuesta = new Object;
 
@@ -13,13 +15,33 @@ app.use(express.static(__dirname + '/public'));
 app.put('/item/:nombre/:cantidad/:precio', function(req, response){
     var nuevoItem = new items.Items(req.params.nombre, req.params.cantidad, req.params.precio);
     almacenItems[nuevoItem.ID] = nuevoItem;
-    response.status(200).send(nuevoItem);
-    //console.log("Ejecutado");
+
+    respuesta = {
+        "status" : "200",
+        "respuesta" : {
+            "ruta" : "/item/:nombre/:cantidad/:precio",
+            "valor" : nuevoItem
+        }
+    };
+    response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));
 });
 
 // Mostramos todos los items
 app.get('/item', function(request, response){
-    response.send(almacenItems)
+
+    if(JSON.stringify(almacenItems) == '{}') {    // Comprobamos si es vacio
+        respuesta = { "status" : "404", "Mensaje" : "No hay Items." };
+        response.status(404).type('json').send(JSON.stringify(respuesta, null, "\t")); 
+    } else {
+        respuesta = {
+            "status" : "200",
+            "respuesta" : {
+                "ruta" : "/item",
+                "valor" : almacenItems
+            }
+        };
+        response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t")); 
+    }
 });
 
 // Mostramos por ID
@@ -28,13 +50,13 @@ app.get('/item/:ID', function(request, response){
     var identificador = request.params.ID;
     
     if(!almacenItems[identificador]) {
-        respuesta = { "status" : "404", "Mensaje" : "No existe ID" };
+        respuesta = { "status" : "404", "Mensaje" : "No existe ID222" };
         response.status(404).type('json').send(JSON.stringify(respuesta, null, "\t")); 
     } else {
         respuesta = {
             "status" : "200",
             "respuesta" : {
-                "ruta" : "/item/" + almacenItems[identificador].ID,
+                "ruta" : "/item/:ID",
                 "valor" : almacenItems[identificador].ID
             }
         };
