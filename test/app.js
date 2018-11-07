@@ -20,15 +20,21 @@ describe("Añadimos nuevo item", function(){
             .end(function(error, resultado){
                 if(error) {
                     return done(error);
-                } else {
-                    resultado.body.should.have.property('ID', 'ID_item2');                    
-                    //console.log("LOG ID:" + resultado.body.ID);
+                } else {                    
+                    var res = resultado.body.respuesta;
+                    var valor = res.valor;
+                    //var valor2 = resultado.body.respuesta.valor
+
+                    resultado.body.should.have.property('status', '200'); 
+                    res.should.have.property('ruta', '/item/:nombre/:cantidad/:precio');
+                    valor.should.have.property('ID', 'ID_item2');                   
+                    //console.log("LOG ID:" + valor2.ID);
                     done();
                 }                
             });
     });
 
-    it('Debería devolver el NOMBRE',function(done){
+    /*it('Debería devolver el NOMBRE',function(done){
         request(app)
             .put('/item/item3/6/800')
             .expect('Content-Type',/json/)
@@ -42,5 +48,5 @@ describe("Añadimos nuevo item", function(){
                     done();
                 }                
             });
-    });
+    });*/
 });
