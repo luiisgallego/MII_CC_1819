@@ -11,18 +11,40 @@ var server_ip_address = '127.0.0.1';
 app.set('puerto', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
+/*
+
+GET - LEER
+POST - CAMBIA ESTADO
+PUT - CREA
+DELETE - BORRA
+
+ - CABECERA => ESTADOS, CODIFICACION, CONTENT-TYPE
+
+ INDICAR PORQUE ELEGIR EL MICROFRAMEWORK (EXPRESS)
+
+ - DOCUMENTACION
+    - PAAS => LENGUAJE DE PROGRAMACION
+    - DEPENDENCIAS (BIBLIOTECAS,...) => PACKAGE.JSON EXPLICARLO 
+
+*/
+
 // Crea un nuevo item
 app.put('/item/:nombre/:cantidad/:precio', function(req, response){
     var nuevoItem = new items.Items(req.params.nombre, req.params.cantidad, req.params.precio);
     almacenItems[nuevoItem.ID] = nuevoItem;
 
     respuesta = {
-        "status" : "200",
-        "respuesta" : {
+        "status" : "OK",
+        "ejemplo" : {
             "ruta" : "/item/:nombre/:cantidad/:precio",
             "valor" : nuevoItem
         }
     };
+    response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));
+});
+
+app.get('/', function(request, response){
+    respuesta = { "status" : "OK" };
     response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));
 });
 
@@ -34,8 +56,8 @@ app.get('/item', function(request, response){
         response.status(404).type('json').send(JSON.stringify(respuesta, null, "\t")); 
     } else {
         respuesta = {
-            "status" : "200",
-            "respuesta" : {
+            "status" : "OK",
+            "ejemplo" : {
                 "ruta" : "/item",
                 "valor" : almacenItems
             }
@@ -54,8 +76,8 @@ app.get('/item/:ID', function(request, response){
         response.status(404).type('json').send(JSON.stringify(respuesta, null, "\t")); 
     } else {
         respuesta = {
-            "status" : "200",
-            "respuesta" : {
+            "status" : "OK",
+            "ejemplo" : {
                 "ruta" : "/item/:ID",
                 "valor" : almacenItems[identificador].ID
             }

@@ -9,7 +9,7 @@
     "main": "./index.js",
     "scripts": {
         "start": "node index.js",
-        "test": "mocha --exit"
+        "test": "nyc --reporter=text mocha --exit"
     },
     "dependencies": {
         "express": "^4.16.4",
@@ -17,7 +17,9 @@
         "should": "^13.2.3",
         "supertest": "^3.3.0"
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "nyc": "^13.1.0"
+    },
     "optionalDependencies": {},
     "engines": {
         "node": ">=0.8"

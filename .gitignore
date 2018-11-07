@@ -8,6 +8,7 @@
 *.pid
 *.gz
 *.[oa]
+*.nyc_output
 *~
 *.#
 **/.DS_Store

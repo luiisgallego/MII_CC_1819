@@ -6,6 +6,8 @@
 //* `cantidad` = numero de items
 //*  `precio` = valor
 
+// CONTIENE LA LÓGICA DE NEGOCIO - DATOS CON LOS QUE TRABAJO
+
 exports.Items = function(nombre, cantidad, precio){
     this.ID = creaID(nombre);
     this.nombre = nombre;

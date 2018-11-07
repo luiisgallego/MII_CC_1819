@@ -1,3 +1,5 @@
+// TEST UNITARIO
+
 var assert = require("assert"),
 items = require(__dirname+"/../items.js");
 

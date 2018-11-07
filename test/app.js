@@ -1,6 +1,17 @@
+// TEST UNITARIO - INTEGRACION
+
 var request = require('supertest'),
 should = require('should'),
 app = require('../index.js');
+
+
+// COMPROBAR
+    // - TIPO MIME
+    // - ESTADOS
+    // - CONTENIDO
+
+    // HACER UN PUT, Y LUEGO OTRO PUT IGUAL Y VER QUE DEVUELVE
+
 
 
 describe("Añadimos nuevo item", function(){
@@ -21,11 +32,11 @@ describe("Añadimos nuevo item", function(){
                 if(error) {
                     return done(error);
                 } else {                    
-                    var res = resultado.body.respuesta;
+                    var res = resultado.body.ejemplo;
                     var valor = res.valor;
                     //var valor2 = resultado.body.respuesta.valor
 
-                    resultado.body.should.have.property('status', '200'); 
+                    resultado.body.should.have.property('status', 'OK'); 
                     res.should.have.property('ruta', '/item/:nombre/:cantidad/:precio');
                     valor.should.have.property('ID', 'ID_item2');                   
                     //console.log("LOG ID:" + valor2.ID);
