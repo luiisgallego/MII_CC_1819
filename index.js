@@ -12,11 +12,6 @@ app.set('puerto', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 /*
-GET - LEER
-POST - CAMBIA ESTADO
-PUT - CREA
-DELETE - BORRA
-
  - CABECERA => ESTADOS, CODIFICACION, CONTENT-TYPE
 
  INDICAR PORQUE ELEGIR EL MICROFRAMEWORK (EXPRESS)
@@ -32,16 +27,16 @@ app.put('/item/:nombre/:cantidad/:precio', function(request, response){
     var valor;
     var existe = false;
 
-    if(JSON.stringify(almacenItems) == '{}') { // Si es vacio, insertamos
+    // Verificamos que no exista el item 
+    if(JSON.stringify(almacenItems) == '{}') { // Si es vacio el array de items, insertamos
         almacenItems[nuevoItem.ID] = nuevoItem;
         valor = nuevoItem;
     } else{
         // Comprobamos si el item ya existe
         for(var clave in almacenItems) {
-            if(almacenItems[clave].nombre == request.params.nombre) {
-                existe = true;
-            }
+            if(almacenItems[clave].nombre == request.params.nombre) existe = true;
         }
+
         if(existe) {
             // Si existe, no insertamos y devolvemos mensaje
             valor = "ITEM ya existe";
@@ -64,48 +59,64 @@ app.put('/item/:nombre/:cantidad/:precio', function(request, response){
 
 // Actualizamos en funcion del nombre
 app.post('/item/:nombre/:cantidad/:precio', function(request, response){
+    var valor;
+    var existe = false;    
     
+    // Buscamos el item 
     for(var clave in almacenItems) {
         if(almacenItems[clave].nombre == request.params.nombre) {
+            // Si existe, actualizamos los valores
             var auxClave = clave;
+            existe = true;
             almacenItems[clave].cantidad = request.params.cantidad;
             almacenItems[clave].precio = request.params.precio;
-        }
+        } 
     }
+
+    // Si existe, lo mostramos modificado, sino, mensaje de error.
+    if(existe) valor = almacenItems[auxClave];
+    else valor = "ITEM no existe";
 
     respuesta = {
         "status" : "OK",
         "ejemplo" : {
             "ruta" : "/item/:nombre/:cantidad/:precio",
-            "valor" : almacenItems[auxClave]
+            "valor" : valor
         }
     };
     response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));
-
 });
 
-app.delete('/item/:ID', function(request, response){  
-    
+// Borramos según ID
+app.delete('/item/:ID', function(request, response){      
     var id = request.params.ID;
-    delete almacenItems[id];   
+    var valor;
+    console.log("ESTAMOS EN DELETE: " + almacenItems[id]);
+
+    // Si no existe item, mensaje de error
+    if(JSON.stringify(almacenItems[id]) == undefined) valor = "ITEM no existe";
+    else {
+        // Borramos y mostramos los items
+        delete almacenItems[id];
+        valor = almacenItems;
+    }       
 
     respuesta = {
         "status" : "OK",
         "ejemplo" : {
             "ruta" : "/item/:ID",
-            "valor" : almacenItems
+            "valor" : valor
         }
     };
     response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));
-
-// Si no existe item con ese nombre -> No devuelve 404, devuelve 200 con "No existe ID."
-
 });
 
 app.get('/', function(request, response){
     respuesta = { "status" : "OK" };
     response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));
 });
+
+/////////////////
 
 // Mostramos todos los items
 app.get('/item', function(request, response){
@@ -176,7 +187,7 @@ app.get('/item/X/:nombre', function(request, response){
 
 app.listen(app.get('puerto'), server_ip_address, function() {
     console.log("Items app corriendo en " + server_ip_address + ":" + app.get('puerto'));
-  });
+});
 
 // Exporta la variable para poder hacer tests
 module.exports = app;
