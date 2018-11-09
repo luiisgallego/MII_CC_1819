@@ -27,7 +27,3 @@ function getID() {
 function creaID(nombre){
     return "ID_" + nombre;
 }
-
-/*function getApuestas(){
-    return this.items;
-}*/

@@ -6,6 +6,7 @@ var items = require("./items.js");
 // Variables globales
 var almacenItems = new Object;
 var respuesta = new Object;
+var valor = new Object;
 
 var server_ip_address = '127.0.0.1'; 
 app.set('puerto', (process.env.PORT || 5000));
@@ -24,7 +25,6 @@ app.use(express.static(__dirname + '/public'));
 // Crea un nuevo item
 app.put('/item/:nombre/:cantidad/:precio', function(request, response){
     var nuevoItem = new items.Items(request.params.nombre, request.params.cantidad, request.params.precio);
-    var valor;
     var existe = false;
 
     // Verificamos que no exista el item 
@@ -59,7 +59,6 @@ app.put('/item/:nombre/:cantidad/:precio', function(request, response){
 
 // Actualizamos en funcion del nombre
 app.post('/item/:nombre/:cantidad/:precio', function(request, response){
-    var valor;
     var existe = false;    
     
     // Buscamos el item 
@@ -90,8 +89,6 @@ app.post('/item/:nombre/:cantidad/:precio', function(request, response){
 // Borramos según ID
 app.delete('/item/:ID', function(request, response){      
     var id = request.params.ID;
-    var valor;
-    console.log("ESTAMOS EN DELETE: " + almacenItems[id]);
 
     // Si no existe item, mensaje de error
     if(JSON.stringify(almacenItems[id]) == undefined) valor = "ITEM no existe";
@@ -111,78 +108,45 @@ app.delete('/item/:ID', function(request, response){
     response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));
 });
 
+// Mostramos status OK
 app.get('/', function(request, response){
     respuesta = { "status" : "OK" };
     response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));
 });
 
-/////////////////
-
 // Mostramos todos los items
 app.get('/item', function(request, response){
 
-    if(JSON.stringify(almacenItems) == '{}') {    // Comprobamos si es vacio
-        respuesta = { "status" : "404", "Mensaje" : "No hay Items." };
-        response.status(404).type('json').send(JSON.stringify(respuesta, null, "\t")); 
-    } else {
-        respuesta = {
-            "status" : "OK",
-            "ejemplo" : {
-                "ruta" : "/item",
-                "valor" : almacenItems,
-                "keys": Object.keys(almacenItems),
-                "long": Object.keys(almacenItems).length
-            }
-        };
-        response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t")); 
-    }
+    // Comprobamos si es aun no hay ninguno 
+    if(JSON.stringify(almacenItems) == '{}') valor = "No hay Items.";    
+    else valor = almacenItems;
+
+    respuesta = {
+        "status" : "OK",
+        "ejemplo" : {
+            "ruta" : "/item",
+            "valor" : valor
+        }
+    };
+    response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));     
 });
 
-// Mostramos por ID
+// Mostramos por ID todos los datos del item
 app.get('/item/:ID', function(request, response){
-
     var identificador = request.params.ID;
     
-    if(!almacenItems[identificador]) {
-        respuesta = { "status" : "404", "Mensaje" : "No existe ID" };
-        response.status(404).type('json').send(JSON.stringify(respuesta, null, "\t")); 
-    } else {
-        respuesta = {
-            "status" : "OK",
-            "ejemplo" : {
-                "ruta" : "/item/:ID",
-                "valor" : almacenItems[identificador].ID
-            }
-        };
-        response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));      
-    }
-});
+    // Comprobamos que existe
+    if(!almacenItems[identificador]) valor = "ITEM no existe";
+    else valor = almacenItems[identificador];
 
-// Mostramos por NOMBRE
-app.get('/item/X/:nombre', function(request, response){
-
-    var nombre = request.params.nombre;
-    var itemx = new Object; 
-
-    for(var clave in almacenItems) {
-        if(almacenItems[clave].nombre == nombre) {
-            itemx = almacenItems[clave];
+    respuesta = {
+        "status" : "OK",
+        "ejemplo" : {
+            "ruta" : "/item/:ID",
+            "valor" : valor
         }
-    }
-    
-    if(JSON.stringify(itemx) == '{}') {
-        respuesta = { "status" : "404", "Mensaje" : "No existe item." };
-        response.status(404).type('json').send(JSON.stringify(respuesta, null, "\t")); 
-    } else {
-        respuesta = {
-            "status" : "OK",
-            "ejemplo" : {
-                "ruta" : "/item/X/:nombre",
-                "valor" : itemx
-            }
-        };
-        response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));      
-    }
+    };   
+    response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));    
 });
 
 app.listen(app.get('puerto'), server_ip_address, function() {
