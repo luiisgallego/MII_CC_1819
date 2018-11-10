@@ -6,24 +6,22 @@
 //* `cantidad` = numero de items
 //*  `precio` = valor
 
-// CONTIENE LA LÓGICA DE NEGOCIO - DATOS CON LOS QUE TRABAJO
+class Items {
 
-exports.Items = function(nombre, cantidad, precio){
-    this.ID = creaID(nombre);
-    this.nombre = nombre;
-    this.cantidad = cantidad;
-    this.precio = precio;    
-    //this.items = new Object;
+    constructor(nombre, cantidad, precio){
+        this.ID = this.creaID(nombre);
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.precio = precio; 
+    }
+    
+    getID() {
+        return this.ID;
+    }
+    
+    creaID(nombre){
+        return "ID_" + nombre;
+    }
 }
 
-function vars(){
-    return ['nombre', 'cantidad', 'precio'];
-}
-
-function getID() {
-    return this.ID;
-}
-
-function creaID(nombre){
-    return "ID_" + nombre;
-}
+module.exports = Items;

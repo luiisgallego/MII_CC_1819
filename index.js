@@ -12,19 +12,9 @@ var server_ip_address = '127.0.0.1';
 app.set('puerto', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
-/*
- - CABECERA => ESTADOS, CODIFICACION, CONTENT-TYPE
-
- INDICAR PORQUE ELEGIR EL MICROFRAMEWORK (EXPRESS)
-
- - DOCUMENTACION
-    - PAAS => LENGUAJE DE PROGRAMACION
-    - DEPENDENCIAS (BIBLIOTECAS,...) => PACKAGE.JSON EXPLICARLO 
-*/
-
 // Crea un nuevo item
 app.put('/item/:nombre/:cantidad/:precio', function(request, response){
-    var nuevoItem = new items.Items(request.params.nombre, request.params.cantidad, request.params.precio);
+    var nuevoItem = new items(request.params.nombre, request.params.cantidad, request.params.precio);
     var existe = false;
 
     // Verificamos que no exista el item 
@@ -37,11 +27,10 @@ app.put('/item/:nombre/:cantidad/:precio', function(request, response){
             if(almacenItems[clave].nombre == request.params.nombre) existe = true;
         }
 
-        if(existe) {
-            // Si existe, no insertamos y devolvemos mensaje
-            valor = "ITEM ya existe";
-        } else {
-            // Si no existe aun lo insertamos
+        // Si existe, no insertamos y devolvemos mensaje
+        if(existe) valor = "ITEM ya existe";
+        else {
+            // Si no existe aun, lo insertamos
             almacenItems[nuevoItem.ID] = nuevoItem;
             valor = nuevoItem;
         }
