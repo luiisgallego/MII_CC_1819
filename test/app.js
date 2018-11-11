@@ -12,7 +12,7 @@ describe("Comprobamos que no hay Items", function(){
                 if(error) return done(error);
                 else {                    
                     // Comprobamos status
-                    resultado.body.should.have.property('status', 'OK');
+                    resultado.body.should.have.property('status', 'OK_TIOOO');
                     resultado.body.ejemplo.should.have.property('ruta', '/item');
                     resultado.body.ejemplo.should.have.property('valor', 'No hay Items.');
                     done(); 
