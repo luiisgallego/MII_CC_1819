@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Para pasarle la url de Heroku
+URL=$1
+
 if [[ "${URL}" == "" ]]; then
     URL="http://localhost:5000"
 fi
