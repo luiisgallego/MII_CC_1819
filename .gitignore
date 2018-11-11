@@ -9,6 +9,7 @@
 *.gz
 *.[oa]
 *.nyc_output
+aux.txt
 *~
 *.#
 **/.DS_Store
