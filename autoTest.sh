@@ -37,4 +37,5 @@ curl -X DELETE "${URL}/item/ID_prueba3"
 echo -e "\n\nINTENTAMOS ACTUALIZAR EL BORRADO"
 curl -X POST "${URL}/item/prueba3/4/400"
 
+
 echo -e "\n\nFIN."
