@@ -175,7 +175,7 @@ describe("Realizamos consultas (GET)", function(){
                 if(error) return done(error);
                 else {                    
                     // Comprobamos status
-                    resultado.body.should.have.property('status', 'OK');
+                    resultado.body.should.have.property('status', 'OK_');
                     done(); 
                 } 
             });
