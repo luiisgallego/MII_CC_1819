@@ -4,11 +4,15 @@ node_js:
 - node
 script:
 - npm test
-deploy:
-  provider: heroku
-  api_key:
-    secure: fgPGTzRPNTGhY6dG5Jl/6kRDVjOvkS488Licj4Mbw/We3ldNsGTgQ9WlBgxVoHiFca4NSm9LFfNMZxxH5O2BLB5hQcmTpkRihNK0QyGnVoPdljMXBaPCn1EnMlWYrHo7fs2gCCK7x3NUosrCfe0v+yxI7zQ2Ok/BDkrWAqTUhW3/Aa7PVCB3oGDTb1DJkZDp9Z8384sL7zkAMXmCgwSV/fkg0c0Z+3v8XQuuMf+p6/SpSljfQtWWmo8q4DeS9d1mT2Ku5lRsMz4vzgrhmP8b9VJx4DQ2flWF6fv/TlSk0ec8dSGC0SfXsKwhqJF6kTOk/DJcsFB04iYuaaTX7T8rjSPpBft6KRdp2VLfE2h6bMXHUpx6Y8Y1izmPHArcK/8PaK9Bc9dUY925bKuLvKn2OvkxWblhJphwVmQzYAeZApfIW/R5oCN6N0iWG0/FYk8ebmp9JcrpFjaxPW3rK596984a9zuirXVbTqLrmq0aB9Sv8fWi4pD0qST8XjDweAnRB7BzaHePvTStVLokOiS74uqFm+P8qaHSVIpPqvsqK64wZLVe9LmfQa9oU122NLol9h9CW3Jkdus/YBVcXjKN+h31+FrInTgzN8p0inRi+u2nwWrWfwFJmjMNiPo6Gc93xIP93Sn4TgVeJhmypVZsnJj1o4GiwRetLHQ7XzuqPXc=
-  strategy: git
-  app: itemsv1
-  on:
-    repo: luiisgallego/MII_CC_1819
+jobs:
+  include:
+    - stage: Test previos
+    script: npm test
+    deploy:
+      provider: heroku
+      app: itemsv1
+      api_key:
+        secure: fgPGTzRPNTGhY6dG5Jl/6kRDVjOvkS488Licj4Mbw/We3ldNsGTgQ9WlBgxVoHiFca4NSm9LFfNMZxxH5O2BLB5hQcmTpkRihNK0QyGnVoPdljMXBaPCn1EnMlWYrHo7fs2gCCK7x3NUosrCfe0v+yxI7zQ2Ok/BDkrWAqTUhW3/Aa7PVCB3oGDTb1DJkZDp9Z8384sL7zkAMXmCgwSV/fkg0c0Z+3v8XQuuMf+p6/SpSljfQtWWmo8q4DeS9d1mT2Ku5lRsMz4vzgrhmP8b9VJx4DQ2flWF6fv/TlSk0ec8dSGC0SfXsKwhqJF6kTOk/DJcsFB04iYuaaTX7T8rjSPpBft6KRdp2VLfE2h6bMXHUpx6Y8Y1izmPHArcK/8PaK9Bc9dUY925bKuLvKn2OvkxWblhJphwVmQzYAeZApfIW/R5oCN6N0iWG0/FYk8ebmp9JcrpFjaxPW3rK596984a9zuirXVbTqLrmq0aB9Sv8fWi4pD0qST8XjDweAnRB7BzaHePvTStVLokOiS74uqFm+P8qaHSVIpPqvsqK64wZLVe9LmfQa9oU122NLol9h9CW3Jkdus/YBVcXjKN+h31+FrInTgzN8p0inRi+u2nwWrWfwFJmjMNiPo6Gc93xIP93Sn4TgVeJhmypVZsnJj1o4GiwRetLHQ7XzuqPXc=
+      strategy: git      
+      on:
+        repo: luiisgallego/MII_CC_1819
