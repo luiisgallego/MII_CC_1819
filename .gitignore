@@ -10,6 +10,7 @@
 *.[oa]
 *.nyc_output
 aux.txt
+node_modules/.cache/nyc
 *~
 *.#
 **/.DS_Store
