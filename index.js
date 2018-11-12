@@ -99,7 +99,7 @@ app.delete('/item/:ID', function(request, response){
 
 // Mostramos status OK
 app.get('/', function(request, response){
-    respuesta = { "status" : "OK" };
+    respuesta = { "status" : "OK MEN" };
     response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));
 });
 
