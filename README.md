@@ -1,5 +1,7 @@
 # MII_CC_1819
 
+[![Build status](https://travis-ci.com/luiisgallego/MII_CC_1819.svg?branch=master)](https://travis-ci.com/luiisgallego/MII_CC_1819)
+
 Proyecto de prácticas para la asignatura Cloud Computing del Máster en Ingeniería Informática.
 
 ### Autor: Luis Gallego Quero
