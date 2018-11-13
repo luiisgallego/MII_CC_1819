@@ -1,6 +1,5 @@
 // Creamos las dependencias
 var express = require('express');
-var favicon = require('express-favicon');
 var app = express();
 var items = require("./items.js");
 
@@ -11,7 +10,6 @@ var respuesta = new Object;
 var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 app.set('puerto', (process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 5000));
 app.use(express.static(__dirname + '/public'));
-app.use(favicon(express.static(__dirname + '/public/images/favicon.png')));
 
 // Crea un nuevo item
 app.put('/item/:nombre/:cantidad/:precio', function(request, response){
