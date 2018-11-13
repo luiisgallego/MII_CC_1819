@@ -63,6 +63,45 @@ Como vemos en la instruccion anterior estamos trabajando con Node.js. Para hacer
 }
 ~~~
 
+# Despliegue
+
+### Rutas
+
+### Ejecución
+
+ Para el correcto despliegue del proyecto vamos a seguir los siguientes pasos:
+ - Clonamos el proyecto de Github
+ ~~~
+ git clone https://github.com/luiisgallego/MII_CC_1819.git
+ ~~~
+ - Accedemos a la carpeta creada tras el clone:
+ ~~~
+ cd MII_CC_1819
+ ~~~
+ - Ahora tendriamos que instalar npm en el caso de que no lo tuvieramos anteriormente, esto depende del sistema operativo.
+ - Una vez instalado npm podemos pasar a instalar las distintas dependencias del proyecto:
+ ~~~
+ npm install
+ ~~~
+- Ahora ya podemos comprobar que nuestro proyecto es funcional pasando sus tests correspondientes:
+ ~~~
+ npm test
+ ~~~ 
+
+Llegado a este punto se nos abre un abanico de posibilidades, podemos trabajar en el proyecto tanto en local como en el despliegue de Heroku. Primero vamos a comentar como trabajar en local:
+- Primero vamos a desplegar nuestro proyecto:
+    - Prueba
+ ~~~
+ npm start
+ ~~~ 
+
+- Podemos trabajar con curl realizando tanto PUT como POST o DELETE, también
+
+
+ - autoTest.sh => Explicar como hacerlo funcionar
+
+ - Enlace despliegue
+
 ### Licencia
 
 Este proyecto se encuentra bajo la licencia GNU General Public License v3.0
