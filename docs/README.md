@@ -43,6 +43,26 @@ Para su implementación usaremos como lenguaje principal Node.js bajo el framewo
 
 Finalmente, indicar que utilizaremos como contenedor Docker y como plataforma de despliegue Heroku.
 
+# PaaS
+
+Dentro de la variedad de Plataformas como Servicio que nos permita construir, ejecutar y operar nuestra aplicación he elegido Heroku. Su sencillez en el despliegue y el servicio gratuito que nos ofrece han sido cuestiones de peso para su elección. Además, su integración con Github y Travis es vital para el desarrollo del proyecto. Concretamente para que Heroku pueda encontrar el archivo principal de mi proyecto he tenido que crear un archivo denominado Procfile que contiene la siguiente instrucción:
+~~~
+web: node index.js 
+~~~
+Como vemos en la instruccion anterior estamos trabajando con Node.js. Para hacer uso de el hay que apoyarse en su gestor de paquetes, npm. Este me ha proporcionado las diferentes dependencias necesarias para la ejecución de mi proyecto, siendo estas las siguientes:
+~~~
+"dependencies": {
+    "express": "^4.16.4",
+    "express-favicon": "^2.0.1",
+    "mocha": "^5.2.0",
+    "should": "^13.2.3",
+    "supertest": "^3.3.0"
+},
+"devDependencies": {
+    "nyc": "^13.1.0"
+}
+~~~
+
 ### Licencia
 
 Este proyecto se encuentra bajo la licencia GNU General Public License v3.0
