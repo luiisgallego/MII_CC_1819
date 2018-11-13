@@ -13,6 +13,7 @@
     },
     "dependencies": {
         "express": "^4.16.4",
+        "express-favicon": "^2.0.1",
         "mocha": "^5.2.0",
         "should": "^13.2.3",
         "supertest": "^3.3.0"
