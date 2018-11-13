@@ -91,9 +91,10 @@ Como vemos en la instruccion anterior estamos trabajando con Node.js. Para hacer
 Llegado a este punto se nos abre un abanico de posibilidades, podemos trabajar en el proyecto tanto en local como en el despliegue de Heroku. Primero vamos a comentar como trabajar en local:
 - Primero vamos a desplegar nuestro proyecto:
     - Prueba
- ~~~
- npm start
- ~~~ 
+    ~~~
+    npm start
+    ~~~ 
+ 
 
 - Podemos trabajar con curl realizando tanto PUT como POST o DELETE, también
 
