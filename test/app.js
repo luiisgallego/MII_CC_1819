@@ -10,11 +10,9 @@ describe("Comprobamos que no hay Items", function(){
             .expect(200)
             .end(function(error, resultado){
                 if(error) return done(error);
-                else {                    
-                    // Comprobamos status
-                    resultado.body.should.have.property('status', 'OK');
-                    resultado.body.ejemplo.should.have.property('ruta', '/item');
-                    resultado.body.ejemplo.should.have.property('valor', 'No hay Items.');
+                else {  
+                    // Hay que comprobar que es vacio
+                    resultado.body.should.be.eql('No hay Items.');
                     done(); 
                 } 
             });
@@ -35,10 +33,8 @@ describe("Añadimos nuevo item (PUT)", function(){
             .expect(200)
             .end(function(error, resultado){
                 if(error) return done(error);
-                else {                    
-                    //var res = resultado.body.ejemplo;
-                    var valor = resultado.body.ejemplo.valor;
-                    valor.should.have.property('ID', 'ID_prueba2');
+                else { 
+                    resultado.body.should.have.property('ID', 'ID_prueba2');
                     done();
                 }                
             });
@@ -51,16 +47,10 @@ describe("Añadimos nuevo item (PUT)", function(){
             .end(function(error, resultado){
                 if(error) return done(error);
                 else {
-                    var valor = resultado.body.ejemplo.valor;
-                    // Comprobamos status
-                    resultado.body.should.have.property('status', 'OK');
-                    // Comprobamos ejemplo -> ruta
-                    resultado.body.ejemplo.should.have.property('ruta', '/item/:nombre/:cantidad/:precio');
-                    // Comprobamos ejemplo -> valor
-                    valor.should.have.property('ID', 'ID_prueba3'); 
-                    valor.should.have.property('nombre', 'prueba3'); 
-                    valor.should.have.property('cantidad', '3'); 
-                    valor.should.have.property('precio', '300');
+                    resultado.body.should.have.property('ID', 'ID_prueba3'); 
+                    resultado.body.should.have.property('nombre', 'prueba3'); 
+                    resultado.body.should.have.property('cantidad', '3'); 
+                    resultado.body.should.have.property('precio', '300');
                     done(); 
                 }
             });
@@ -73,12 +63,7 @@ describe("Añadimos nuevo item (PUT)", function(){
             .end(function(error, resultado){
                 if(error) return done(error);
                 else {
-                    var valor = resultado.body.ejemplo.valor;
-                    // Comprobamos status
-                    resultado.body.should.have.property('status', 'OK');
-                    // Comprobamos ejemplo -> ruta
-                    resultado.body.ejemplo.should.have.property('ruta', '/item/:nombre/:cantidad/:precio');
-                    resultado.body.ejemplo.should.have.property('valor', 'ITEM ya existe');
+                    resultado.body.should.be.eql('ITEM ya existe');
                     done(); 
                 }
             });
@@ -94,16 +79,10 @@ describe("Actualizamos un item (POST)", function(){
             .end(function(error, resultado){
                 if(error) return done(error);
                 else {                    
-                    var valor = resultado.body.ejemplo.valor;
-                    // Comprobamos status
-                    resultado.body.should.have.property('status', 'OK');
-                    // Comprobamos ejemplo -> ruta
-                    resultado.body.ejemplo.should.have.property('ruta', '/item/:nombre/:cantidad/:precio');
-                    // Comprobamos ejemplo -> valor
-                    valor.should.have.property('ID', 'ID_prueba2'); 
-                    valor.should.have.property('nombre', 'prueba2'); 
-                    valor.should.have.property('cantidad', '21'); 
-                    valor.should.have.property('precio', '210');
+                    resultado.body.should.have.property('ID', 'ID_prueba2'); 
+                    resultado.body.should.have.property('nombre', 'prueba2'); 
+                    resultado.body.should.have.property('cantidad', '21'); 
+                    resultado.body.should.have.property('precio', '210');
                     done(); 
                 }                
             });
@@ -115,12 +94,8 @@ describe("Actualizamos un item (POST)", function(){
             .expect(200)
             .end(function(error, resultado){
                 if(error) return done(error);
-                else {                    
-                    var valor = resultado.body.ejemplo.valor;
-                    // Comprobamos status
-                    resultado.body.should.have.property('status', 'OK');
-                    resultado.body.ejemplo.should.have.property('ruta', '/item/:nombre/:cantidad/:precio');
-                    resultado.body.ejemplo.should.have.property('valor', 'ITEM no existe');
+                else {
+                    resultado.body.should.be.eql('ITEM no existe');
                     done(); 
                 }                
             });
@@ -135,12 +110,9 @@ describe("Borramos un item (DELETE)", function(){
             .expect(200)
             .end(function(error, resultado){
                 if(error) return done(error);
-                else {                    
-                    var valor = resultado.body.ejemplo.valor;
-                    // Comprobamos status
-                    resultado.body.should.have.property('status', 'OK');
-                    // Comprobamos ejemplo -> ruta
-                    resultado.body.ejemplo.should.have.property('ruta', '/item/:ID');
+                else {                 
+                    resultado.body.ID_prueba1.should.have.property('ID', 'ID_prueba1');
+                    resultado.body.ID_prueba3.should.have.property('ID', 'ID_prueba3');
                     done(); 
                 }                
             });
@@ -153,12 +125,7 @@ describe("Borramos un item (DELETE)", function(){
             .end(function(error, resultado){
                 if(error) return done(error);
                 else {                    
-                    var valor = resultado.body.ejemplo.valor;
-                    // Comprobamos status
-                    resultado.body.should.have.property('status', 'OK');
-                    // Comprobamos ejemplo -> ruta
-                    resultado.body.ejemplo.should.have.property('ruta', '/item/:ID');
-                    resultado.body.ejemplo.should.have.property('valor', 'ITEM no existe');
+                    resultado.body.should.be.eql('ITEM no existe');
                     done(); 
                 }                
             });
@@ -187,18 +154,12 @@ describe("Realizamos consultas (GET)", function(){
             .expect(200)
             .end(function(error, resultado){
                 if(error) return done(error);
-                else {          
-                    var valor = resultado.body.ejemplo.valor;        
-                    // Comprobamos status
-                    resultado.body.should.have.property('status', 'OK');
-                    // Comprobamos ejemplo -> ruta
-                    resultado.body.ejemplo.should.have.property('ruta', '/item');
-                    // Comprobamos ejemplo -> valor
-                    valor.ID_prueba1.should.have.property('ID','ID_prueba1');
-                    valor.ID_prueba1.should.have.property('nombre','prueba1');
-                    valor.ID_prueba1.should.have.property('cantidad','1');
-                    valor.ID_prueba1.should.have.property('precio','100');
-                    valor.ID_prueba3.should.have.property('ID', 'ID_prueba3');
+                else {       
+                    resultado.body.ID_prueba1.should.have.property('ID','ID_prueba1');
+                    resultado.body.ID_prueba1.should.have.property('nombre','prueba1');
+                    resultado.body.ID_prueba1.should.have.property('cantidad','1');
+                    resultado.body.ID_prueba1.should.have.property('precio','100');
+                    resultado.body.ID_prueba3.should.have.property('ID', 'ID_prueba3');
                     done(); 
                 } 
             });
@@ -211,13 +172,7 @@ describe("Realizamos consultas (GET)", function(){
             .end(function(error, resultado){
                 if(error) return done(error);
                 else {          
-                    var valor = resultado.body.ejemplo.valor;       
-                    // Comprobamos status
-                    resultado.body.should.have.property('status', 'OK');
-                    // Comprobamos ejemplo -> ruta
-                    resultado.body.ejemplo.should.have.property('ruta', '/item/:ID');
-                    // Comprobamos ejemplo -> valor
-                    valor.should.have.property('ID','ID_prueba1');
+                    resultado.body.should.have.property('ID','ID_prueba1');
                     done(); 
                 } 
             });
@@ -230,12 +185,7 @@ describe("Realizamos consultas (GET)", function(){
             .end(function(error, resultado){
                 if(error) return done(error);
                 else {          
-                    var valor = resultado.body.ejemplo.valor;       
-                    // Comprobamos status
-                    resultado.body.should.have.property('status', 'OK');
-                    // Comprobamos ejemplo -> ruta
-                    resultado.body.ejemplo.should.have.property('ruta', '/item/:ID');
-                    resultado.body.ejemplo.should.have.property('valor', 'ITEM no existe');
+                    resultado.body.should.be.eql('ITEM no existe');
                     done(); 
                 } 
             });

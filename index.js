@@ -7,7 +7,6 @@ var items = require("./items.js");
 // Variables globales
 var almacenItems = new Object;
 var respuesta = new Object;
-var valor = new Object;
 
 var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 app.set('puerto', (process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 5000));
@@ -22,7 +21,7 @@ app.put('/item/:nombre/:cantidad/:precio', function(request, response){
     // Verificamos que no exista el item 
     if(JSON.stringify(almacenItems) == '{}') { // Si es vacio el array de items, insertamos
         almacenItems[nuevoItem.ID] = nuevoItem;
-        valor = nuevoItem;
+        respuesta = nuevoItem;
     } else{
         // Comprobamos si el item ya existe
         for(var clave in almacenItems) {
@@ -30,21 +29,14 @@ app.put('/item/:nombre/:cantidad/:precio', function(request, response){
         }
 
         // Si existe, no insertamos y devolvemos mensaje
-        if(existe) valor = "ITEM ya existe";
+        if(existe) respuesta = "ITEM ya existe";
         else {
             // Si no existe aun, lo insertamos
             almacenItems[nuevoItem.ID] = nuevoItem;
-            valor = nuevoItem;
+            respuesta = nuevoItem;
         }
     }
 
-    respuesta = {
-        "status" : "OK",
-        "ejemplo" : {
-            "ruta" : "/item/:nombre/:cantidad/:precio",
-            "valor" : valor
-        }
-    };
     response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));
 });
 
@@ -64,16 +56,9 @@ app.post('/item/:nombre/:cantidad/:precio', function(request, response){
     }
 
     // Si existe, lo mostramos modificado, sino, mensaje de error.
-    if(existe) valor = almacenItems[auxClave];
-    else valor = "ITEM no existe";
+    if(existe) respuesta = almacenItems[auxClave];
+    else respuesta = "ITEM no existe"; 
 
-    respuesta = {
-        "status" : "OK",
-        "ejemplo" : {
-            "ruta" : "/item/:nombre/:cantidad/:precio",
-            "valor" : valor
-        }
-    };
     response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));
 });
 
@@ -82,20 +67,13 @@ app.delete('/item/:ID', function(request, response){
     var id = request.params.ID;
 
     // Si no existe item, mensaje de error
-    if(JSON.stringify(almacenItems[id]) == undefined) valor = "ITEM no existe";
+    if(JSON.stringify(almacenItems[id]) == undefined) respuesta = "ITEM no existe";
     else {
         // Borramos y mostramos los items
         delete almacenItems[id];
-        valor = almacenItems;
-    }       
+        respuesta = almacenItems;
+    }   
 
-    respuesta = {
-        "status" : "OK",
-        "ejemplo" : {
-            "ruta" : "/item/:ID",
-            "valor" : valor
-        }
-    };
     response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));
 });
 
@@ -109,16 +87,9 @@ app.get('/', function(request, response){
 app.get('/item', function(request, response){
 
     // Comprobamos si es aun no hay ninguno 
-    if(JSON.stringify(almacenItems) == '{}') valor = "No hay Items.";    
-    else valor = almacenItems;
+    if(JSON.stringify(almacenItems) == '{}') respuesta = "No hay Items.";    
+    else respuesta = almacenItems;
 
-    respuesta = {
-        "status" : "OK",
-        "ejemplo" : {
-            "ruta" : "/item",
-            "valor" : valor
-        }
-    };
     response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));     
 });
 
@@ -127,16 +98,9 @@ app.get('/item/:ID', function(request, response){
     var identificador = request.params.ID;
     
     // Comprobamos que existe
-    if(!almacenItems[identificador]) valor = "ITEM no existe";
-    else valor = almacenItems[identificador];
-
-    respuesta = {
-        "status" : "OK",
-        "ejemplo" : {
-            "ruta" : "/item/:ID",
-            "valor" : valor
-        }
-    };   
+    if(!almacenItems[identificador]) respuesta = "ITEM no existe";
+    else respuesta = almacenItems[identificador];
+  
     response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));    
 });
 
