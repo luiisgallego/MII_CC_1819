@@ -150,13 +150,10 @@ Llegado a este punto se nos abren varias posibilidades, podemos trabajar en el p
             ~~~
 
 - Ejecución y test en la aplicación desplegada en *Heroku*:
-    El funcionamiento es el mismo que en *local*, tan solo que en este caso hay que sustituir *http://localhost:5000* por la dirección de la aplicación desglegada *https://itemsv1.herokuapp.com*. En este caso no hay levantarla.
-
-    Si queremos hacer uso de *autoTest* ejecutar de la siguiente manera:
-    
-        ~~~
-        ./autoTest.sh https://itemsv1.herokuapp.com
-        ~~~
+    El funcionamiento es el mismo que en *local*, tan solo que en este caso hay que sustituir *http://localhost:5000* por la dirección de la aplicación desglegada *https://itemsv1.herokuapp.com*. En este caso no hay levantarla. Si queremos hacer uso de *autoTest* ejecutar de la siguiente manera:
+    ~~~
+    ./autoTest.sh https://itemsv1.herokuapp.com
+    ~~~
 
 Para terminar, podemos encontrar la aplicación desplegada [aquí](https://itemsv1.herokuapp.com/).
 
