@@ -8,6 +8,7 @@
 *.pid
 *.gz
 *.[oa]
+# Archivos proyecto concreto
 *.nyc_output
 aux.txt
 node_modules/.cache
