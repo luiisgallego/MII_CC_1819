@@ -156,7 +156,7 @@ Llegado a este punto se nos abren varias posibilidades, podemos trabajar en el p
     ~~~
 
 Para terminar, podemos encontrar la aplicación desplegada: 
-Despliegue: https://luiisgallego.github.io/MII_CC_1819/
+Despliegue: https://itemsv1.herokuapp.com/
 
 ### Licencia
 
