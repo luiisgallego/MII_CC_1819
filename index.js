@@ -63,16 +63,16 @@ app.post('/item/:nombre/:cantidad/:precio', function(request, response){
 // Borramos según ID
 app.delete('/item/:ID', function(request, response){      
     var id = request.params.ID;
+    var existe = false;
 
-    // Si no existe item, mensaje de error
-    if(JSON.stringify(almacenItems[id]) == undefined) respuesta = "ITEM no existe";
-    else {
+    // Si no existe item, 404
+    if(JSON.stringify(almacenItems[id]) == undefined){
+        response.status(404).type('json').send();        
+    } else {
         // Borramos y mostramos los items
         delete almacenItems[id];
-        respuesta = almacenItems;
-    }   
-
-    response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));
+        response.status(200).type('json').send();
+    } 
 });
 
 // Mostramos status OK
@@ -84,11 +84,11 @@ app.get('/', function(request, response){
 // Mostramos todos los items
 app.get('/item', function(request, response){
 
-    // Comprobamos si es aun no hay ninguno 
-    if(JSON.stringify(almacenItems) == '{}') respuesta = "No hay Items.";    
-    else respuesta = almacenItems;
+    // Comprobamos si aun no hay ninguno 
+    if(JSON.stringify(almacenItems) == '{}') response.status(404).type('json').send();    
+    else response.status(200).type('json').send(JSON.stringify(almacenItems, null, "\t")); 
 
-    response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));     
+        
 });
 
 // Mostramos por ID todos los datos del item
@@ -96,10 +96,8 @@ app.get('/item/:ID', function(request, response){
     var identificador = request.params.ID;
     
     // Comprobamos que existe
-    if(!almacenItems[identificador]) respuesta = "ITEM no existe";
-    else respuesta = almacenItems[identificador];
-  
-    response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));    
+    if(!almacenItems[identificador]) response.status(404).type('json').send();
+    else response.status(200).type('json').send(JSON.stringify(almacenItems[identificador], null, "\t"));   
 });
 
 app.listen(app.get('puerto'), server_ip_address, function() {

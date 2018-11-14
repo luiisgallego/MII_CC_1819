@@ -3,19 +3,11 @@ should = require('should'),
 app = require('../index.js');
 
 describe("Comprobamos que no hay Items", function(){
-    it('Debería devolver no hay items', function(done){
+    it('Debería devolver 404.', function(done){
         request(app)
             .get('/item')
             .expect('Content-Type',/json/)
-            .expect(200)
-            .end(function(error, resultado){
-                if(error) return done(error);
-                else {  
-                    // Hay que comprobar que es vacio
-                    resultado.body.should.be.eql('No hay Items.');
-                    done(); 
-                } 
-            });
+            .expect(404, done)
     });
 });
 
@@ -107,28 +99,13 @@ describe("Borramos un item (DELETE)", function(){
         request(app)
             .delete('/item/ID_prueba2')
             .expect('Content-Type',/json/)
-            .expect(200)
-            .end(function(error, resultado){
-                if(error) return done(error);
-                else {                 
-                    resultado.body.ID_prueba1.should.have.property('ID', 'ID_prueba1');
-                    resultado.body.ID_prueba3.should.have.property('ID', 'ID_prueba3');
-                    done(); 
-                }                
-            });
+            .expect(200, done)
     });
-    it('Debería devolver item no existe',function(done){
+    it('Debería devolver 404',function(done){
         request(app)
             .delete('/item/ID_prueba2')
             .expect('Content-Type',/json/)
-            .expect(200)
-            .end(function(error, resultado){
-                if(error) return done(error);
-                else {                    
-                    resultado.body.should.be.eql('ITEM no existe');
-                    done(); 
-                }                
-            });
+            .expect(404, done)
     });
 });
 
@@ -177,17 +154,10 @@ describe("Realizamos consultas (GET)", function(){
                 } 
             });
     });
-    it('Debería devolver el item no existe', function(done){
+    it('Debería devolver 404', function(done){
         request(app)
             .get('/item/ID_prueba2')
             .expect('Content-Type',/json/)
-            .expect(200)
-            .end(function(error, resultado){
-                if(error) return done(error);
-                else {          
-                    resultado.body.should.be.eql('ITEM no existe');
-                    done(); 
-                } 
-            });
+            .expect(404, done)
     });
 });
