@@ -106,41 +106,58 @@ Para la transferencia de datos en nuestro proyecto se ha seguido el método esta
 
 ### Ejecución
 
- Para el correcto despliegue del proyecto vamos a seguir los siguientes pasos:
- - Clonamos el proyecto de Github
- ~~~
- git clone https://github.com/luiisgallego/MII_CC_1819.git
- ~~~
+Para el correcto despliegue del proyecto vamos a seguir los siguientes pasos:
+ - Clonamos el proyecto de *Github*:
+    ~~~
+    git clone https://github.com/luiisgallego/MII_CC_1819.git
+    ~~~
  - Accedemos a la carpeta creada tras el clone:
- ~~~
- cd MII_CC_1819
- ~~~
- - Ahora tendriamos que instalar npm en el caso de que no lo tuvieramos anteriormente, esto depende del sistema operativo.
- - Una vez instalado npm podemos pasar a instalar las distintas dependencias del proyecto:
- ~~~
- npm install
- ~~~
-- Ahora ya podemos comprobar que nuestro proyecto es funcional pasando sus tests correspondientes:
- ~~~
- npm test
- ~~~ 
+    ~~~
+    cd MII_CC_1819
+    ~~~
+ - Ahora tenemos que instalar *npm* (gestor de paquetes) en el caso de que no lo tuvieramos anteriormente, esto depende del sistema operativo.
+ - Una vez instalado *npm* podemos pasar a instalar las distintas dependencias del proyecto:
+    ~~~
+    npm install
+    ~~~
+- Ya podemos comprobar que nuestro proyecto es funcional pasando sus tests correspondientes:
+    ~~~
+    npm test
+    ~~~ 
 
-Llegado a este punto se nos abre un abanico de posibilidades, podemos trabajar en el proyecto tanto en local como en el despliegue de Heroku. Primero vamos a comentar como trabajar en local:
-- Ejecución y test en local:
+Llegado a este punto se nos abren varias posibilidades, podemos trabajar en el proyecto tanto en local como en el despliegue de Heroku. Primero vamos a comentar como trabajar en *local*:
+- Ejecución y test en *local*:
     - Primero levantamos nuestra aplicación:
-    ~~~
-    npm start
-    ~~~
+        ~~~
+        npm start
+        ~~~
+    - Podemos ver la página inicial de la aplicación en el navegador en la siguiente dirección:
+        ~~~
+        http://localhost:5000/
+        ~~~
+    - Ahora de nuevo tenemos varias posibilades:
+        - Ejecutar un script auxiliar que realiza tanto inserciones, como actualizaciones, borrados y consultas (posiblemente tengas que dar permisos de ejecución al script):
+            ~~~
+            ./autoTest.sh
+            ~~~
+        - Realizar lo mismo que el *autoTest* pero manualmente. Para ello usamos *curl*, siendo algunos ejemplos los siguientes:
+            ~~~
+            curl -X PUT "http://localhost:5000/item/prueba1/1/100"
+            curl "http://localhost:5000/item"
+            curl "http://localhost:5000/item/ID_prueba10"
+            curl -X POST "http://localhost:5000/item/prueba10/15/150"
+            curl -X DELETE "http://localhost:5000/item/ID_prueba10"
+            ~~~
 
-         
- 
+- Ejecución y test en la aplicación desplegada en *Heroku*:
+    El funcionamiento es el mismo que en *local*, tan solo que en este caso hay que sustituir *http://localhost:5000* por la dirección de la aplicación desglegada *https://itemsv1.herokuapp.com*. En este caso no hay levantarla.
 
-- Podemos trabajar con curl realizando tanto PUT como POST o DELETE, también
+    Si queremos hacer uso de *autoTest* ejecutar de la siguiente manera:
+        ~~~
+        ./autoTest.sh https://itemsv1.herokuapp.com
+        ~~~
 
-
- - autoTest.sh => Explicar como hacerlo funcionar
-
- - Enlace despliegue
+Para terminar, podemos encontrar la aplicación desplegada [aquí](https://itemsv1.herokuapp.com/).
 
 ### Licencia
 
