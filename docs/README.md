@@ -49,7 +49,16 @@ Dentro de la variedad de *Plataformas como Servicio* que nos permita construir, 
 ~~~
 web: node index.js 
 ~~~
-Como vemos en la instruccion anterior estamos trabajando con *Node.js*. Para hacer uso de el hay que apoyarse en su gestor de paquetes, *npm*. Este me ha proporcionado las diferentes dependencias necesarias para la ejecución de mi proyecto, siendo estas las siguientes:
+El despligue en Heroku es bastante sencillo, una vez definido el *Procfile* el siguiente paso es crearnos nuestro proyecto en la plataforma de Heroku, para ello inicialmente hacemos:
+~~~
+heroku create
+~~~
+Posteriormente accedemos a nuestro proyecto en la página de Heroku y activamos el despligue con Gitub. Es importante activar el despliegue automático, además de marcar la opción de que pase el CI antes de desplegar (así esperará a que Travis pase los tests antes de desplegarse en Heroku). Llegados a este punto ya podemos desplegar nuestra aplicación al completo en Heroku:
+~~~
+git push heroku master
+~~~
+
+Como vemos en la primera instruccion anterior estamos trabajando con *Node.js*. Para hacer uso de el hay que apoyarse en su gestor de paquetes, *npm*. Este me ha proporcionado las diferentes dependencias necesarias para la ejecución de mi proyecto, siendo estas las siguientes:
 ~~~
 "dependencies": {
     "express": "^4.16.4",
@@ -62,7 +71,7 @@ Como vemos en la instruccion anterior estamos trabajando con *Node.js*. Para hac
 }
 ~~~
 
-En resumen estamos utilizado Express como microframework, Mocha, Should y Supertest para los tests y Nyc para mostrar la cobertura de dichos tests.
+En resumen estamos utilizado *Express* como microframework, *Mocha*, *Should* y *Supertest* para los tests y *Nyc* para mostrar la cobertura de dichos tests.
 
 ### Datos Aplicación
 
