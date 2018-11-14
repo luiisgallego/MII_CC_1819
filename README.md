@@ -49,7 +49,7 @@ Como microservicios a desarrollar encontramos los siguientes:
 # Despligue
 
 Podemos ver el proyecto desplegado pinchando [aquí](https://itemsv1.herokuapp.com/). Si queremos obtener más información sobre el despligue, pruebas y diferentes rutas del proyecto: 
-Despligue: https://luiisgallego.github.io/MII_CC_1819/
+Despliegue: https://luiisgallego.github.io/MII_CC_1819/
 
 ### Licencia
 
