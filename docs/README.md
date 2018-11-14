@@ -155,7 +155,8 @@ Llegado a este punto se nos abren varias posibilidades, podemos trabajar en el p
     ./autoTest.sh https://itemsv1.herokuapp.com
     ~~~
 
-Para terminar, podemos encontrar la aplicación desplegada en el [despliegue](https://itemsv1.herokuapp.com/).
+Para terminar, podemos encontrar la aplicación desplegada: 
+Despligue: https://luiisgallego.github.io/MII_CC_1819/
 
 ### Licencia
 
