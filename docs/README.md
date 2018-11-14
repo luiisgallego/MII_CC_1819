@@ -142,7 +142,7 @@ Llegado a este punto se nos abren varias posibilidades, podemos trabajar en el p
             ~~~
         - Realizar lo mismo que el *autoTest* pero manualmente. Para ello usamos *curl*, siendo algunos ejemplos los siguientes:
             ~~~
-            curl -X PUT "http://localhost:5000/item/prueba1/1/100"
+            curl -X PUT "http://localhost:5000/item/prueba10/1/100"
             curl "http://localhost:5000/item"
             curl "http://localhost:5000/item/ID_prueba10"
             curl -X POST "http://localhost:5000/item/prueba10/15/150"
