@@ -45,15 +45,14 @@ Finalmente, indicar que utilizaremos como contenedor Docker y como plataforma de
 
 # PaaS
 
-Dentro de la variedad de Plataformas como Servicio que nos permita construir, ejecutar y operar nuestra aplicación he elegido Heroku. Su sencillez en el despliegue y el servicio gratuito que nos ofrece han sido cuestiones de peso para su elección. Además, su integración con Github y Travis es vital para el desarrollo del proyecto. Concretamente para que Heroku pueda encontrar el archivo principal de mi proyecto he tenido que crear un archivo denominado Procfile que contiene la siguiente instrucción:
+Dentro de la variedad de *Plataformas como Servicio* que nos permita construir, ejecutar y operar nuestra aplicación he elegido *Heroku*. Su sencillez en el despliegue y el servicio gratuito que nos ofrece han sido cuestiones de peso para su elección. Además, su integración con *Github* y *Travis* es vital para el desarrollo del proyecto. Concretamente para que *Heroku* pueda encontrar el archivo principal de mi proyecto he tenido que crear un archivo denominado *Procfile* que contiene la siguiente instrucción:
 ~~~
 web: node index.js 
 ~~~
-Como vemos en la instruccion anterior estamos trabajando con Node.js. Para hacer uso de el hay que apoyarse en su gestor de paquetes, npm. Este me ha proporcionado las diferentes dependencias necesarias para la ejecución de mi proyecto, siendo estas las siguientes:
+Como vemos en la instruccion anterior estamos trabajando con *Node.js*. Para hacer uso de el hay que apoyarse en su gestor de paquetes, *npm*. Este me ha proporcionado las diferentes dependencias necesarias para la ejecución de mi proyecto, siendo estas las siguientes:
 ~~~
 "dependencies": {
     "express": "^4.16.4",
-    "express-favicon": "^2.0.1",
     "mocha": "^5.2.0",
     "should": "^13.2.3",
     "supertest": "^3.3.0"
@@ -63,9 +62,31 @@ Como vemos en la instruccion anterior estamos trabajando con Node.js. Para hacer
 }
 ~~~
 
+En resumen estamos utilizado Express como microframework, Mocha, Should y Supertest para los tests y Nyc para mostrar la cobertura de dichos tests.
+
+### Datos Aplicación
+
+Para terminar este apartado, comentar la estructura de datos que he utilizado en mi proyecto, sin la que todo lo anterior no tendría nada para funcionar.
+
+Se ha construido una clase de Items con los siguientes datos:
+- ID: Como identificador único de cada item.
+- Nombre: Nombre del item.
+- Cantidad: Numero de items que tenemos.
+- Precio: Precio de cada item.
+
+Esta clase de Items es utilizada por *index.js* para realizar los 4 verbos de Http, declando previamente un objeto que funciona como vector almacén de Items, denominado *almacenItems*.
+
 # Despliegue
 
 ### Rutas
+
+Para la transferencia de datos en nuestro proyecto se ha seguido el método estandarizado actualmente, siendo este el uso de *API REST*. Para ello se han utilizado los 4 verbos de Http indicando en cada uno de ellos una ruta de ejecución. Los métodos que podemos encontrar en mi aplicación son los siguientes:
+- PUT:
+- POST:
+- DELETE:
+- GET:
+    -
+    -
 
 ### Ejecución
 
@@ -89,11 +110,13 @@ Como vemos en la instruccion anterior estamos trabajando con Node.js. Para hacer
  ~~~ 
 
 Llegado a este punto se nos abre un abanico de posibilidades, podemos trabajar en el proyecto tanto en local como en el despliegue de Heroku. Primero vamos a comentar como trabajar en local:
-- Primero vamos a desplegar nuestro proyecto:
-    - Prueba
+- Ejecución y test en local:
+    - Primero levantamos nuestra aplicación:
     ~~~
     npm start
-    ~~~ 
+    ~~~
+
+         
  
 
 - Podemos trabajar con curl realizando tanto PUT como POST o DELETE, también
