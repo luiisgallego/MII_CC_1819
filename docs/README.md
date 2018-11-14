@@ -91,18 +91,18 @@ Esta clase de Items es utilizada por *index.js* para realizar los 4 verbos de Ht
 
 Para la transferencia de datos en nuestro proyecto se ha seguido el método estandarizado actualmente, siendo este el uso de una *API REST*. Para ello se han utilizado los 4 verbos de Http indicando en cada uno de ellos las rutas de ejecución. Los métodos que podemos encontrar en mi aplicación son los siguientes:
 - PUT: Añadimos nuevo item.
-    /item/:nombre/:cantidad/:precio
+    - /item/:nombre/:cantidad/:precio
 - POST: Actualizo información de un item.
-    /item/:nombre/:cantidad/:precio
+    - /item/:nombre/:cantidad/:precio
 - DELETE: Borro un item.
-    /item/:ID
+    - /item/:ID
 - GET: Consulto información del item.
     - Muestro status ok al entrar a la aplicación.
-        /
+        - /
     - Muestro todos los items.
-        /item
+        - /item
     - Muestro la información de un item por su ID.
-        /item/:ID
+        - /item/:ID
 
 ### Ejecución
 
