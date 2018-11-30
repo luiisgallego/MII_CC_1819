@@ -3,4 +3,4 @@ sudo: true
 node_js:
   - node
 script:
-  - npm test
+  - sudo npm test
