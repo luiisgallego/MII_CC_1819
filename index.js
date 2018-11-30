@@ -8,7 +8,7 @@ var almacenItems = new Object;
 var respuesta = new Object;
 
 var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
-app.set('puerto', (process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 5000));
+app.set('puerto', (process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 80));
 app.use(express.static(__dirname + '/public'));
 
 // Crea un nuevo item
