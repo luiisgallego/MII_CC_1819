@@ -106,4 +106,3 @@ app.listen(app.get('puerto'), server_ip_address, function() {
 
 // Exporta la variable para poder hacer tests
 module.exports = app;
-
