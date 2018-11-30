@@ -4,4 +4,4 @@ dist: trusty
 node_js:
   - node
 script:
-  - sudo npm test
+  - npm test
