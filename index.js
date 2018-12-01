@@ -10,7 +10,8 @@ var almacenItems = new Object;
 var respuesta = new Object;
 // Var globales BD_Mongo.db
 var ObjectID = mongodb.ObjectID;
-var CONTACTS_COLLECTION = "items";
+var ITEMS_COLLECTION = "items";
+var URI_mongo = "mongodb://items:items1@ds044587.mlab.com:44587/items";
 var db; // Global para ser utilizada por todas las rutas
 
 // Configuramos puertos y conexiones
@@ -20,7 +21,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
 // Conectamos BD y lanzamos aplicación
-mongodb.MongoClient.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/test2", function(err, client) {
+mongodb.MongoClient.connect(URI_mongo, function(err, client) {
     if(err){
         console.log(err);
         process.exit(1);
@@ -34,8 +35,7 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI || "mongodb://localhost:2701
     app.listen(app.get('puerto'), server_ip_address, function() {
         console.log("Items app corriendo en " + server_ip_address + ":" + app.get('puerto'));
     });  
-});
-
+});  
 
 // Crea un nuevo item
 app.put('/item/:nombre/:cantidad/:precio', function(request, response){
@@ -56,8 +56,13 @@ app.put('/item/:nombre/:cantidad/:precio', function(request, response){
         if(existe) respuesta = "ITEM ya existe";
         else {
             // Si no existe aun, lo insertamos
-            almacenItems[nuevoItem.ID] = nuevoItem;
-            respuesta = nuevoItem;
+            db.collection(ITEMS_COLLECTION).insertOne(nuevoItem, function(err, doc){
+                if(err) handleError(res, err.message, "Fallo al insertar.");
+                else {
+                    almacenItems[nuevoItem.ID] = nuevoItem;
+                    respuesta = nuevoItem;
+                }
+            });
         }
     }
 
