@@ -20,7 +20,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
 // Conectamos BD y lanzamos aplicación
-mongodb.MongoClient.connect(process.env.MONGODB_URI || "mongodb://localhost:5000/test", function(err, client) {
+mongodb.MongoClient.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/test2", function(err, client) {
     if(err){
         console.log(err);
         process.exit(1);
