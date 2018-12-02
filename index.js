@@ -14,7 +14,7 @@ var respuesta = new Object;
 //var _ITEMS_ = "items";
 //var db; // Global para ser utilizada por todas las rutas
 
-var URI_mongo_mlab = process.env.MONGOLAB_URI || "mongodb://localhost/itemsTest";
+var URI_mongo_mlab = "mongodb://items:items1@ds044587.mlab.com:44587/items" || "mongodb://localhost/itemsTest";
 
 // Configuramos puertos y conexiones
 var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';

@@ -1,13 +1,6 @@
 var request = require('supertest'),
 should = require('should'),
 app = require('../index.js');
-//var mongoose = require('mongoose');
-/*var URI_mongo_mlab = "mongodb://items:items1@ds044587.mlab.com:44587/items" || "mongodb://localhost/itemsTest";
-
-mongoose.connect(URI_mongo_mlab, { useNewUrlParser: true }, function (err, res) {
-    if(err) console.log('ERROR conectando a: ' + URI_mongo_mlab + '. ' + err);
-    else console.log ('BD conectada a: ' + URI_mongo_mlab);
-});*/
 
 describe("Comprobamos que no hay Items", function(){
     it('Debería devolver 200.', function(done){
@@ -27,10 +20,7 @@ describe("Comprobamos BD", function(){
             .end(function(error, resultado){
                 if(error) return done(error);
                 else { 
-                    console.log("DENTRO");
-                    console.log(resultado.body[0].ID);
-                    res = resultado[0];
-                    //console.log(res);
+                    
                     resultado.body[0].should.have.property('ID', 'probando');
                     done();
                 } 
