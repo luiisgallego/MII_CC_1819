@@ -43,14 +43,13 @@ var itemsBD = mongoose.model('items', itemsSchema); // Exportar para test
 // Mostramos status OK
 app.get('/', function(request, response){
     respuesta = { "status" : "OK" };
-    response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));
+    response.status(200).type('json').send(respuesta);
 });
 
 /*  "/item/:nombre/:cantidad/:precio"
  *    PUT: Crear nuevo item.
  *    POST: Actualizar item por nombre.
  */
-
 app.put('/item/:nombre/:cantidad/:precio', function(request, response){
     var nuevoItem = new items(request.params.nombre, request.params.cantidad, request.params.precio);
 
@@ -69,15 +68,14 @@ app.put('/item/:nombre/:cantidad/:precio', function(request, response){
             // Si no existe, lo creamos
             var resp;
             itemsBD.create(nuevoItemBD, function(err,res){
-                if(err) response.status(500);   // Error BD
-                else resp = nuevoItemBD;        // Item insertado
+                if(err) response.status(500);                       // Error BD
+                else response.status(200).type('json').send(res);   // Item insertado                  
             });
-        } else resp = "Item ya existe.";
-
-        response.status(200).type('json').send(resp);
+        } else response.status(200).type('json').send({ txt: 'ITEM ya existe'});  // No insertamos
     });
 });
 
+// ACTUALIZARRRRR
 app.post('/item/:nombre/:cantidad/:precio', function(request, response){
     var existe = false;    
     
@@ -121,7 +119,7 @@ app.get('/item/:ID', function(request, response){
     itemsBD.find({ ID: identificador }, function(err, res){
         if(err) response.status(500);                                       // Error BD
         else if(res.length == 0) response.status(404).type('json').send();  // Item no existe
-        else response.status(200).type('json').send(res[0]);                // Item encontrado 
+        else response.status(200).type('json').send(res);                // Item encontrado 
    });      
 });
 
