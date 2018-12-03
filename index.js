@@ -75,26 +75,19 @@ app.put('/item/:nombre/:cantidad/:precio', function(request, response){
     });
 });
 
-// ACTUALIZARRRRR
 app.post('/item/:nombre/:cantidad/:precio', function(request, response){
     var existe = false;    
+
+    var itemUpdate = {
+        nombre: request.params.nombre,
+        cantidad: request.params.cantidad,
+        precio: request.params.precio
+    };
     
-    // Buscamos el item 
-    for(var clave in almacenItems) {
-        if(almacenItems[clave].nombre == request.params.nombre) {
-            // Si existe, actualizamos los valores
-            var auxClave = clave;
-            existe = true;
-            almacenItems[clave].cantidad = request.params.cantidad;
-            almacenItems[clave].precio = request.params.precio;
-        } 
-    }
-
-    // Si existe, lo mostramos modificado, sino, mensaje de error.
-    if(existe) respuesta = almacenItems[auxClave];
-    else respuesta = "ITEM no existe"; 
-
-    response.status(200).type('json').send(JSON.stringify(respuesta, null, "\t"));
+    itemsBD.updateOne({ ID: "ID_" + itemUpdate.nombre }, itemUpdate, function(err,res){
+        if(err) response.status(500);                       // Error BD
+        else response.status(200).type('json').send(res);   // Item insertado                  
+    });
 });
 
 /*  "/item"
@@ -119,7 +112,7 @@ app.get('/item/:ID', function(request, response){
     itemsBD.find({ ID: identificador }, function(err, res){
         if(err) response.status(500);                                       // Error BD
         else if(res.length == 0) response.status(404).type('json').send();  // Item no existe
-        else response.status(200).type('json').send(res);                // Item encontrado 
+        else response.status(200).type('json').send(res);                   // Item encontrado 
    });      
 });
 
@@ -129,18 +122,9 @@ app.delete('/item/:ID', function(request, response){
 
     // QUE DEVUELE SI EL ITEM NO EXISTE?
     itemsBD.deleteOne({ ID: id }, function(err, res){
-        if(err) response.status(500).send(err);                                        // Error BD
-        else response.status(200).type('json').send(res[0]);                // Item borrado 
+        if(err) response.status(500).send(err);         // Error BD
+        else response.status(200).type('json').send();  // Item borrado 
     });
-
-    // Si no existe item, 404
-    /*if(JSON.stringify(almacenItems[id]) == undefined){
-        response.status(404).type('json').send();        
-    } else {
-        // Borramos y mostramos los items
-        delete almacenItems[id];
-        response.status(200).type('json').send();
-    } */
 });
 
 // Lanzamos la aplicacion

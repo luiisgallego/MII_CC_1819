@@ -31,14 +31,14 @@ describe("Añadimos nuevo item (PUT)", function(){
         request(app)
             .put('/item/prueba1/1/100')  
 	        .expect('Content-Type', /json/)
-            .expect(200)  
-            .end(function(error, resultado){
+            .expect(200, done)  
+            /*.end(function(error, resultado){
                 if(error) return done(error);
                 else {
                     resultado.body.should.have.property('ID', 'ID_prueba1');
                     done();
                 } 
-            });
+            });*/
     });
     it('Debería devolver el item al completo', function(done){
         request(app)
@@ -110,39 +110,6 @@ describe("Realizamos consultas (GET)", function(){
     });
 });
 
-/*
-describe("Actualizamos un item (POST)", function(){
-    it('Debería actualizar el item',function(done){
-        request(app)
-            .post('/item/prueba2/21/210')
-            .expect('Content-Type',/json/)
-            .expect(200)
-            .end(function(error, resultado){
-                if(error) return done(error);
-                else {                    
-                    resultado.body.should.have.property('ID', 'ID_prueba2'); 
-                    resultado.body.should.have.property('nombre', 'prueba2'); 
-                    resultado.body.should.have.property('cantidad', '21'); 
-                    resultado.body.should.have.property('precio', '210');
-                    done(); 
-                }                
-            });
-    });
-    it('Debería devolver item no existe',function(done){
-        request(app)
-            .post('/item/prueba4/21/210')
-            .expect('Content-Type',/json/)
-            .expect(200)
-            .end(function(error, resultado){
-                if(error) return done(error);
-                else {
-                    resultado.body.should.be.eql('ITEM no existe');
-                    done(); 
-                }                
-            });
-    });
-});
-
 describe("Borramos un item (DELETE)", function(){
     it('Debería borrar el item',function(done){
         request(app)
@@ -150,12 +117,14 @@ describe("Borramos un item (DELETE)", function(){
             .expect('Content-Type',/json/)
             .expect(200, done)
     });
-    it('Debería devolver 404',function(done){
+});
+
+describe("Actualizamos un item (POST)", function(){
+    it('Debería actualizar el item',function(done){
         request(app)
-            .delete('/item/ID_prueba2')
+            .post('/item/prueba1/11/111')
             .expect('Content-Type',/json/)
-            .expect(404, done)
+            .expect(200, done)
     });
 });
-*/
 
