@@ -55,18 +55,24 @@ describe("Añadimos nuevo item (PUT)", function(){
                 }
             });
     });  
-    it('Debería devolver item ya existe', function(done){
+    it('Debería devolver error', function(done){
         request(app)
             .put('/item/prueba1/1/100')
             .expect('Content-Type',/json/)
-            .expect(200)
+            .expect(404)
             .end(function(error, resultado){
                 if(error) return done(error);
                 else {
-                    resultado.body.should.have.property('txt', 'ITEM ya existe');
+                    resultado.body.should.have.property('txt', 'Error al insertar ITEM');
                     done(); 
                 }
             });
+    }); 
+    it('Debería devolver 404 al insertar', function(done){
+        request(app)
+            .put('/item/prueba/1/X')
+            .expect('Content-Type',/json/)
+            .expect(404, done)
     }); 
 });
 

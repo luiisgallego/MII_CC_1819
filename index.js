@@ -39,9 +39,8 @@ var itemsBD = mongoose.model('items', itemsSchema); // Exportar para test
 /*  "/"
  *    GET: Devolver status OK
  */
-
-// Mostramos status OK
 app.get('/', function(request, response){
+    // Mostramos status OK
     respuesta = { "status" : "OK" };
     response.status(200).type('json').send(respuesta);
 });
@@ -63,15 +62,15 @@ app.put('/item/:nombre/:cantidad/:precio', function(request, response){
     // Comprobamos si el item existe
     itemsBD.find({ ID: nuevoItem.ID }, function(err,res) {
 
-        if(err) response.status(500);           // Error BD
-        else if(res.length == 0) {      
+        if(err || res.length != 0) response.status(404).type('json').send({ txt: "Error al insertar ITEM"});         // Error BD
+        else {      
             // Si no existe, lo creamos
             var resp;
             itemsBD.create(nuevoItemBD, function(err,res){
-                if(err) response.status(500);                       // Error BD
+                if(err) response.status(404).type('json').send();   // Error BD
                 else response.status(200).type('json').send(res);   // Item insertado                  
             });
-        } else response.status(200).type('json').send({ txt: 'ITEM ya existe'});  // No insertamos
+        }
     });
 });
 
@@ -85,7 +84,7 @@ app.post('/item/:nombre/:cantidad/:precio', function(request, response){
     };
     
     itemsBD.updateOne({ ID: "ID_" + itemUpdate.nombre }, itemUpdate, function(err,res){
-        if(err) response.status(500);                       // Error BD
+        if(err) response.status(404).type('json').send();                       // Error BD
         else response.status(200).type('json').send(res);   // Item insertado                  
     });
 });
@@ -96,8 +95,7 @@ app.post('/item/:nombre/:cantidad/:precio', function(request, response){
 app.get('/item', function(request, response){
 
    itemsBD.find({}, function(err, res){
-        if(err) response.status(500);                                           // Error BD
-        else if(res.length == 0) response.status(404).type('json').send();      // No hay items
+        if(err || res.length == 0) response.status(404).type('json').send();    // Error BD || Item no encontrado
         else response.status(200).type('json').send(res);                       // Items encontrados
    });          
 });
@@ -110,9 +108,8 @@ app.get('/item/:ID', function(request, response){
     var identificador = request.params.ID;
     
     itemsBD.find({ ID: identificador }, function(err, res){
-        if(err) response.status(500);                                       // Error BD
-        else if(res.length == 0) response.status(404).type('json').send();  // Item no existe
-        else response.status(200).type('json').send(res);                   // Item encontrado 
+        if(err || res.length == 0) response.status(404).type('json').send();    // Error || Item no existe
+        else response.status(200).type('json').send(res);                       // Item encontrado 
    });      
 });
 
@@ -122,8 +119,8 @@ app.delete('/item/:ID', function(request, response){
 
     // QUE DEVUELE SI EL ITEM NO EXISTE?
     itemsBD.deleteOne({ ID: id }, function(err, res){
-        if(err) response.status(500).send(err);         // Error BD
-        else response.status(200).type('json').send();  // Item borrado 
+        if(err) response.status(404).type('json').send();   // Error BD
+        else response.status(200).type('json').send();      // Item borrado 
     });
 });
 
