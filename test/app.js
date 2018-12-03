@@ -18,7 +18,6 @@ describe("APP ON", function(){
                 if(error) return done(error);
                 else {                    
                     // Comprobamos status
-                    console.log("Aqui " + resultado.body.status);
                     resultado.body.should.have.property('status', 'OK');
                     done(); 
                 } 
