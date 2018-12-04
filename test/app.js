@@ -133,3 +133,11 @@ describe("Actualizamos un item (POST)", function(){
     });
 });
 
+describe("Borramos el item restante", function(){
+    it('Debería borrar el item',function(done){
+        request(app)
+            .delete('/item/ID_prueba1')
+            .expect('Content-Type',/json/)
+            .expect(200, done)
+    });
+});
