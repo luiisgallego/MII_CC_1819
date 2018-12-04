@@ -53,14 +53,14 @@ Despliegue: https://itemsv1.herokuapp.com/
 
 # Provision
 
-MV: 13.68.226.57
+MV: 40.117.94.145
 
 Para el provisionamiento de la aplicación hemos optado por [Ansible](https://www.ansible.com/). Nos hemos decantado por esta herramienta por la sencillez para crear y entender los playbook mediante el lenguaje *YAML*. Además, la gestión de la configuración de diferentes máquinas, y su integración con Azure o Amazon es clave para el desarrollo de nuestra aplicación. Como sistemas operativos que usan nuestras máquinas usamos los siguientes:
 
 - La máquina anfitriona usa Mac OS Mojave.
 - La maquina virtual usa Ubuntu Server 14.04 LTS desplegada en Azure. Hemos elegido usar *Ubuntu* ya que en su versión mínima, server, permite utilizar todos los recursos hardware de una manera óptica y podría estar durante años sin presentar problemas. Su adquisición es barata y cuenta con una buena seguridad. En definitiva, contiene todo lo neceasario para desplegar un sistema que trabaje indefinidamente en la nube.
 
-Para el aprovisionamiento usando *Ansible*, tenemos todos los detalles [aquí](https://github.com/luiisgallego/MII_CC_1819/tree/master/provision)
+Para el aprovisionamiento usando *Ansible*, podemos consultar todos los detalles [aquí](https://github.com/luiisgallego/MII_CC_1819/tree/master/provision)
 
 ### Licencia
 

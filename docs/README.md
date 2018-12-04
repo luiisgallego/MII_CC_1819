@@ -45,20 +45,13 @@ Finalmente, indicar que utilizaremos como contenedor Docker y como plataforma de
 
 # PaaS
 
-Dentro de la variedad de *Plataformas como Servicio* que nos permita construir, ejecutar y operar nuestra aplicación he elegido *Heroku*. Su sencillez en el despliegue y el servicio gratuito que nos ofrece han sido cuestiones de peso para su elección. Además, su integración con *Github* y *Travis* es vital para el desarrollo del proyecto. Concretamente para que *Heroku* pueda encontrar el archivo principal de mi proyecto he tenido que crear un archivo denominado *Procfile* que contiene la siguiente instrucción:
+Dentro de la variedad de *Plataformas como Servicio* que nos permita construir, ejecutar y operar nuestra aplicación he elegido *Heroku*. Su sencillez en el despliegue y el servicio gratuito que nos ofrece han sido cuestiones de peso para su elección. Además, su integración con *Github* y *Travis* es vital para el desarrollo del proyecto. Concretamente para que *Heroku* pueda encontrar el archivo principal de mi proyecto he tenido que crear un archivo denominado *Procfile*. Este es un mecanismo para declara qué comandos son ejecutados por la plataforma *Heroku*. Concretamente utiliazamos la siguiente instrucción en la cual indicamos que mediante *Node.js* ejecute nuestro archivo principal, *index.js*:
 ~~~
 web: node index.js 
 ~~~
-El despligue en Heroku es bastante sencillo, una vez definido el *Procfile* el siguiente paso es crearnos nuestro proyecto en la plataforma de Heroku, para ello inicialmente hacemos:
-~~~
-heroku create
-~~~
-Posteriormente accedemos a nuestro proyecto en la página de Heroku y activamos el despligue con Gitub. Es importante activar el despliegue automático, además de marcar la opción de que pase el CI antes de desplegar (así esperará a que Travis pase los tests antes de desplegarse en Heroku). Llegados a este punto ya podemos desplegar nuestra aplicación al completo en Heroku:
-~~~
-git push heroku master
-~~~
+El despligue en Heroku es bastante sencillo, una vez definido el *Procfile* el siguiente paso es crearnos nuestro proyecto en la plataforma de Heroku. Una vez creado el proyecto, solo tenemos que indicar en *deploy* que se despliegue desde Github. Es importante activar el despliegue automático, además de marcar la opción de que pase el CI antes de desplegar (así esperará a que Travis pase los tests antes de desplegarse en Heroku) De esta forma, una vez realizado *push* hacia *Github*, si los test de *Travis* se pasan correctamente, la aplicación se desplegará en *Heroku*.
 
-Como vemos en la primera instruccion anterior estamos trabajando con *Node.js*. Para hacer uso de el hay que apoyarse en su gestor de paquetes, *npm*. Este me ha proporcionado las diferentes dependencias necesarias para la ejecución de mi proyecto, siendo estas las siguientes:
+Como vemos en la primera instruccion anterior estamos trabajando con *Node.js*. Para hacer uso de él hay que apoyarse en su gestor de paquetes, *npm*. Este me ha proporcionado las diferentes dependencias necesarias para la ejecución de mi proyecto, siendo estas las siguientes:
 ~~~
 "dependencies": {
     "express": "^4.16.4",
