@@ -10,25 +10,37 @@ Proyecto de prácticas para la asignatura Cloud Computing del Máster en Ingenie
 
 Módulo para la gestión de contabilidad de una empresa.
 
-### Descripción
+### Listado de Apartados
+
+- [Descripción](#descripcion)
+    - [Descripcion del problema](#descipcion_problema)
+- [Tecnologías del proyecto](#tecnologias)
+    - [Arquitectura](#arquitectura)
+    - [Microservicios](#microservicios)
+    - [Back-end](#back_end)
+- [Despligue](#despligue)
+- [Provision](#provision)
+- [Licencia](#licencia)
+
+### Descripción <a name="descripcion"></a>
 
 Tras la realización de un ERP que posibilitaba la gestión de las tareas de documentación de una PYME, ha llegado el momento de ampliar su funcionalidad con la inserción de un módulo de contabilidad. Este módulo se ubica dentro de un proyecto mayor destinado a un futuro TFM, en el cual se reconstruirá el backend de dicho ERP evolucionando hacia una arquitectura basada en microservicios. 
 
 Este módulo nos permitirá tener una primera versión de un inventario de productos, culminando en la gestión del balance económico final de la empresa.
 
-### Descripción del problema
+### Descripción del problema <a name="descipcion_problema"></a>
 
 En el desarrollo de contabilidad de una empresa hay gran cantidad de variables que controlar, desde la compra de inventario básico a una fábrica, su posterior venta con los beneficios obtenidos pasando por el gasto diario que se genera en la empresa y un largo etcetera.
 
 Con la realización de este módulo llegaremos a establecer una primera versión que controle el anterior problema. Para ello nos centraremos en desarrollar un sistema que nos permita introducir los datos cliente junto con la información de los items de la factura y su precio, generando el documento final correspondiente. 
 
-# Tecnologías del proyecto
+# Tecnologías del proyecto <a name="tecnologias"></a>
 
-### Arquitectura
+### Arquitectura <a name="arquitectura"></a>
 
 Utilizaremos una arquitectura basada en microservicios. 
 
-### Microservicios
+### Microservicios <a name="microservicios"></a>
 
 Como microservicios a desarrollar encontramos los siguientes:
 
@@ -37,7 +49,7 @@ Como microservicios a desarrollar encontramos los siguientes:
 - Generación de la factura.
 - Escritura en un log de los procesos generados en el sistema.
 
-### Back-end
+### Back-end <a name="back_end"></a>
 
 - Lenguaje principal Node.js bajo el framework Express.js. 
 - Base de datos, MongoDB. 
@@ -46,12 +58,12 @@ Como microservicios a desarrollar encontramos los siguientes:
 - Contenedor Docker. 
 - Plataforma de despliegue Heroku.
 
-# Despligue
+# Despligue <a name="despliegue"></a>
 
 Podemos ver el proyecto desplegado pinchando [aquí](https://itemsv1.herokuapp.com/). Si queremos obtener más información sobre el despligue, pruebas y diferentes rutas del proyecto: 
 Despliegue: https://itemsv1.herokuapp.com/
 
-# Provision
+# Provision <a name="provision"></a>
 
 MV: 40.117.94.145
 
@@ -62,7 +74,7 @@ Para el provisionamiento de la aplicación hemos optado por [Ansible](https://ww
 
 Para el aprovisionamiento usando *Ansible*, podemos consultar todos los detalles [aquí](https://github.com/luiisgallego/MII_CC_1819/tree/master/provision)
 
-### Licencia
+### Licencia <a name="licencia"></a>
 
 Este proyecto se encuentra bajo la licencia GNU General Public License v3.0
 
