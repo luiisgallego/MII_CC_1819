@@ -15,7 +15,7 @@ ansible-playbook -i ansible_hosts -b playbook.yml
 ~~~
 
 El resultado de la ejecución anterior lo podemos ver en la siguiente imagen:
-![despliegueAnsible](../docs/images/comprobacionAnsible.png)
+![despliegueAnsible](../docs/images/despliegueAnsible.png)
 
 
 ### Comprobación del provisionamiento por un compañero
