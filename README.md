@@ -72,7 +72,7 @@ Para el provisionamiento de la aplicación hemos optado por [Ansible](https://ww
 - La máquina anfitriona usa Mac OS Mojave.
 - La maquina virtual usa Ubuntu Server 14.04 LTS desplegada en Azure. Hemos elegido usar *Ubuntu* ya que en su versión mínima, server, permite utilizar todos los recursos hardware de una manera óptica y podría estar durante años sin presentar problemas. Su adquisición es barata y cuenta con una buena seguridad. En definitiva, contiene todo lo neceasario para desplegar un sistema que trabaje indefinidamente en la nube.
 
-Para el aprovisionamiento usando *Ansible*, podemos consultar todos los detalles [aquí](https://github.com/luiisgallego/MII_CC_1819/tree/master/provision)
+Para el aprovisionamiento usando *Ansible* y documentación detalla, podemos consultar todos los detalles [aquí](https://github.com/luiisgallego/MII_CC_1819/tree/master/provision).
 
 ### Licencia <a name="licencia"></a>
 
