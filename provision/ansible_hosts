@@ -1,2 +1,2 @@
 [default]
-azureUbuntuCC ansible_ssh_port=22 ansible_ssh_host=40.87.46.181 ansible_ssh_user=luis ansible_ssh_private_key_file=~/.ssh/id_rsa
+ubuntuCC ansible_ssh_port=22 ansible_ssh_host=40.117.94.145 ansible_ssh_user=luis ansible_ssh_private_key_file=~/.ssh/id_rsa
