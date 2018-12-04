@@ -8,27 +8,43 @@ Proyecto de prácticas para la asignatura Cloud Computing del Máster en Ingenie
 
 Módulo para la gestión de contabilidad de una empresa.
 
-### Descripción
+### Listado de Apartados
+
+- [Descripción](#descripcion)
+    - [Descripcion del problema](#descipcion_problema)
+- [Tecnologías del proyecto](#tecnologias)
+    - [Arquitectura](#arquitectura)
+    - [Microservicios](#microservicios)
+    - [Back-end](#back_end)
+- [PaaS](#paas)
+    - [Datos de la Aplicación](#datos_aplicacion)
+- [Despligue](#despligue)
+    - [Rutas](#rutas)
+    - [Ejecucion](#ejecucion)
+- [Provision](#provision)
+- [Licencia](#licencia)
+
+### Descripción <a name="descripcion"></a>
 
 Tras la realización de un ERP que posibilitaba la gestión de las tareas de documentación de una PYME, ha llegado el momento de ampliar su funcionalidad con la inserción de un módulo de contabilidad. Este módulo se ubica dentro de un proyecto mayor destinado a un futuro TFM, en el cual se reconstruirá el backend de dicho ERP evolucionando hacia una arquitectura basada en microservicios. 
 
 Este módulo nos permitirá tener una primera versión de un inventario de productos, culminando en la gestión del balance económico final de la empresa.
 
-### Descripción del problema
+### Descripción del problema <a name="descipcion_problema"></a>
 
 En el desarrollo de contabilidad de una empresa hay gran cantidad de variables que controlar, desde la compra de inventario básico a una fábrica, su posterior venta con los beneficios obtenidos pasando por el gasto diario que se genera en la empresa y un largo etcetera.
 
 Con la realización de este módulo llegaremos a establecer una primera versión que controle el anterior problema. Para ello nos centraremos en desarrollar un sistema que nos permita introducir los datos cliente junto con la información de los items de la factura y su precio, generando el documento final correspondiente. 
 
-# Tecnologías del proyecto
+# Tecnologías del proyecto <a name="tecnologias"></a>
 
-### Arquitectura
+### Arquitectura <a name="arquitectura"></a>
 
 Para evolucionar el ERP y desarrollo de la asignatura utilizaremos una arquitectura basada en microservicios. Una de las razones fundamentales es que el proyecto inicial nació para estar en la web y ser usado por diferentes usuarios a la vez, de esta manera, con los microservicios podremos mantener un sistema estable y bien escalado.
 
 Además, es una evolución lógica ya que el ERP inicial está basado en un arquitectura monolítica, concretamente MVC, la cual se volvió incosistente y difícilmente escalable.
 
-### Microservicios
+### Microservicios <a name="microservicios"></a>
 
 Como microservicios a desarrollar encontramos los siguientes:
 
@@ -37,13 +53,13 @@ Como microservicios a desarrollar encontramos los siguientes:
 - Generación de la factura.
 - Escritura en un log de los procesos generados en el sistema.
 
-### Back-end
+### Back-end <a name="back_end"></a>
 
 Para su implementación usaremos como lenguaje principal Node.js bajo el framework Express.js. Como base de datos, MongoDB. Además, nos basaremos en un desarrollo mediante test, usando para ello Travis-CI. El nexo de unión entre los distintos microservicios será llevado a cabo mediante el broker RabbitMQ.
 
 Finalmente, indicar que utilizaremos como contenedor Docker y como plataforma de despliegue Heroku.
 
-# PaaS
+# PaaS <a name="paas"></a>
 
 Dentro de la variedad de *Plataformas como Servicio* que nos permita construir, ejecutar y operar nuestra aplicación he elegido *Heroku*. Su sencillez en el despliegue y el servicio gratuito que nos ofrece han sido cuestiones de peso para su elección. Además, su integración con *Github* y *Travis* es vital para el desarrollo del proyecto. Concretamente para que *Heroku* pueda encontrar el archivo principal de mi proyecto he tenido que crear un archivo denominado *Procfile*. Este es un mecanismo para declara qué comandos son ejecutados por la plataforma *Heroku*. Concretamente utiliazamos la siguiente instrucción en la cual indicamos que mediante *Node.js* ejecute nuestro archivo principal, *index.js*:
 ~~~
@@ -66,7 +82,7 @@ Como vemos en la primera instruccion anterior estamos trabajando con *Node.js*. 
 
 En resumen estamos utilizado *Express* como microframework, *Mocha*, *Should* y *Supertest* para los tests y *Nyc* para mostrar la cobertura de dichos tests.
 
-### Datos Aplicación
+### Datos de la Aplicación <a name="datos_aplicacion"></a>
 
 Para terminar este apartado, comentar la estructura de datos que he utilizado en mi proyecto, sin la que todo lo anterior no tendría nada para funcionar.
 
@@ -78,9 +94,9 @@ Se ha construido una clase de Items con los siguientes datos:
 
 Esta clase de Items es utilizada por *index.js* para realizar los 4 verbos de Http, declando previamente un objeto que funciona como vector almacén de Items, denominado *almacenItems*.
 
-# Despliegue
+# Despliegue <a name="despligue"></a>
 
-### Rutas
+### Rutas   <a name="rutas"></a>
 
 Para la transferencia de datos en nuestro proyecto se ha seguido el método estandarizado actualmente, siendo este el uso de una *API REST*. Para ello se han utilizado los 4 verbos de Http indicando en cada uno de ellos las rutas de ejecución. Los métodos que podemos encontrar en mi aplicación son los siguientes:
 - PUT: Añadimos nuevo item.
