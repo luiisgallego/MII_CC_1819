@@ -13,9 +13,9 @@ var respuesta = new Object;
 
 // Configuramos puertos y conexiones
 var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
-var puerto_ = process.env.PORT || 80;
+var puerto = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 5000;
 //app.set('puerto', (process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 80));
-//app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -128,8 +128,8 @@ app.delete('/item/:ID', function(request, response){
 });
 
 // Lanzamos la aplicacion
-app.listen(puerto_, server_ip_address, function() {
-    console.log("Items app corriendo en " + server_ip_address + ":" + puerto_);
+app.listen(app.get('puerto'), server_ip_address, function() {
+    console.log("Items app corriendo en " + server_ip_address + ":" + app.get('puerto'));
 });
 
 // Exporta la variable para poder hacer tests
