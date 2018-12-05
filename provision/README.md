@@ -17,6 +17,20 @@ ansible-playbook -i ansible_hosts -b playbook.yml
 El resultado de la ejecución anterior lo podemos ver en la siguiente imagen:
 ![despliegueAnsible](../docs/images/despliegueAnsible.png)
 
+### Provisión en Azure
+
+MV: 40.117.94.145
+
+Una vez que el provisionamiento ha funcionado correctamente en nuestras máquinas virtuales locales, llega el momento de desplegar en algún servicio de nube de los que encontramos en el mercado. Encontramos diferentes opciones, como *AWS de Amazon* o *Azure de Microsoft*, en nuestro caso hemos utilizado el segundo aprovechando la subscripción que disfrutamos.
+
+Como primer paso, una vez dentro de la plataforma de *Azure*, tenemos que crearnos los recursos necesarios para nuestra máquina virtual. Nosotros de nuevo hemos utilizado el sistema operativo Ubuntu Server 14.04. Una vez creados los recursos necesarios, ya disponemos de todo lo necesario para realizar el provisionamiento en esta máquina. Para ello, debemos cambiar nuestro *ansible_hosts* con la IP de la máquina de *Azure* además de cambiar el nombre en función del proporcionado a esta nueva máquina.
+
+Finalmente comentar que la captura anteriormente utilizada es la que corresponde al despliegue en *Azure*. Por último, una captura final del status OK desde el navegador:
+![statusOK](../docs/images/statusOK.png)
+
+### Comprobacion del provisionamiento de un compañero
+
+Podemos ver el proceso realizado y el resultado [aquí](https://github.com/AlejandroCN7/Proyecto-Cloud-Computing/blob/master/docs/comprobacionProvision.md).
 
 ### Comprobación del provisionamiento por un compañero
 
