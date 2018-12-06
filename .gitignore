@@ -11,7 +11,7 @@
 # Archivos proyecto concreto
 *.nyc_output
 aux.txt
-node_modules/.cache
+node_modules
 *~
 *.#
 **/.DS_Store
