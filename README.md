@@ -65,7 +65,7 @@ Despliegue: https://itemsv1.herokuapp.com/
 
 # Provision <a name="provision"></a>
 
-MV: 40.117.94.145
+MV: 13.82.132.92
 
 Para el provisionamiento de la aplicación hemos optado por [Ansible](https://www.ansible.com/). Nos hemos decantado por esta herramienta por la sencillez para crear y entender los playbook mediante el lenguaje *YAML*. Además, la gestión de la configuración de diferentes máquinas, y su integración con Azure o Amazon es clave para el desarrollo de nuestra aplicación. Como sistemas operativos que usan nuestras máquinas usamos los siguientes:
 

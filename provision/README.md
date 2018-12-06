@@ -19,7 +19,7 @@ El resultado de la ejecución anterior lo podemos ver en la siguiente imagen:
 
 ### Provisión en Azure
 
-MV: 40.117.94.145
+MV: 13.82.132.92
 
 Una vez que el provisionamiento ha funcionado correctamente en nuestras máquinas virtuales locales, llega el momento de desplegar en algún servicio de nube de los que encontramos en el mercado. Encontramos diferentes opciones, como *AWS de Amazon* o *Azure de Microsoft*, en nuestro caso hemos utilizado el segundo aprovechando la subscripción que disfrutamos.
 
