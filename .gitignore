@@ -12,6 +12,7 @@
 *.nyc_output
 aux.txt
 node_modules
+provision/playbook.retry
 *~
 *.#
 **/.DS_Store
