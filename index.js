@@ -99,7 +99,7 @@ app.put('/item/:nombre/:cantidad/:precio', function(request, response){
             var resp;
             itemsBD.create(nuevoItemBD, function(err,res){
                 if(err) {
-                    response.status(404).type('json').send();   // Error BD
+                    response.status(404).type('json').send();       // Error BD
                     logger.info(txtLog + 404);
                 }
                 else {
@@ -113,6 +113,7 @@ app.put('/item/:nombre/:cantidad/:precio', function(request, response){
 
 app.post('/item/:nombre/:cantidad/:precio', function(request, response){
     var existe = false;    
+    var txtLog = 'POST /item/:nombre/:cantidad/:precio desde IP' + request.connection.remoteAddress + ' con status ';
 
     var itemUpdate = {
         nombre: request.params.nombre,
@@ -121,8 +122,14 @@ app.post('/item/:nombre/:cantidad/:precio', function(request, response){
     };
     
     itemsBD.updateOne({ ID: "ID_" + itemUpdate.nombre }, itemUpdate, function(err,res){
-        if(err) response.status(404).type('json').send();                       // Error BD
-        else response.status(200).type('json').send(res);   // Item insertado                  
+        if(err) {
+            response.status(404).type('json').send();       // Error BD
+            logger.info(txtLog + 404);
+        }
+        else {
+            response.status(200).type('json').send(res);   // Item insertado 
+            logger.info(txtLog + 200);
+        }                 
     });
 });
 
@@ -130,10 +137,17 @@ app.post('/item/:nombre/:cantidad/:precio', function(request, response){
  *    GET: Mostrar todos los items.
  */
 app.get('/item', function(request, response){
+    var txtLog = 'GET /item desde IP' + request.connection.remoteAddress + ' con status ';
 
    itemsBD.find({}, function(err, res){
-        if(err || res.length == 0) response.status(404).type('json').send();    // Error BD || Item no encontrado
-        else response.status(200).type('json').send(res);                       // Items encontrados
+        if(err || res.length == 0) {
+            response.status(404).type('json').send();       // Error BD || Item no encontrado
+            logger.info(txtLog + 404);
+        }
+        else {
+            response.status(200).type('json').send(res);    // Items encontrados
+            logger.info(txtLog + 200);
+        }
    });          
 });
 
@@ -143,10 +157,17 @@ app.get('/item', function(request, response){
  */
 app.get('/item/:ID', function(request, response){
     var identificador = request.params.ID;
+    var txtLog = 'GET /item/:ID desde IP' + request.connection.remoteAddress + ' con status ';
     
     itemsBD.find({ ID: identificador }, function(err, res){
-        if(err || res.length == 0) response.status(404).type('json').send();    // Error || Item no existe
-        else response.status(200).type('json').send(res);                       // Item encontrado 
+        if(err || res.length == 0) {
+            response.status(404).type('json').send();       // Error || Item no existe
+            logger.info(txtLog + 404);
+        }
+        else {
+            response.status(200).type('json').send(res);    // Item encontrado 
+            logger.info(txtLog + 200);
+        }
    });      
 });
 
@@ -158,11 +179,11 @@ app.delete('/item/:ID', function(request, response){
     // QUE DEVUELE SI EL ITEM NO EXISTE?
     itemsBD.deleteOne({ ID: id }, function(err, res){
         if(err) {
-            response.status(404).type('json').send();   // Error BD
+            response.status(404).type('json').send();        // Error BD
             logger.info(txtLog + 404);
         }
         else {
-            response.status(200).type('json').send();      // Item borrado 
+            response.status(200).type('json').send();       // Item borrado 
             logger.info(txtLog + 200);
         }
     });    

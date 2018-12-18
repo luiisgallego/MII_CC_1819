@@ -3,6 +3,7 @@ should = require('should'),
 app = require('../index.js');
 
 describe("APP ON", function(){
+    this.timeout(10000);
     it('Debería devolver 200.', function(done){
         request(app)
             .get('/')
@@ -26,6 +27,7 @@ describe("APP ON", function(){
 });
 
 describe("Añadimos nuevo item (PUT)", function(){
+    this.timeout(10000);
     it('Debería crear el item', function(done){
         request(app)
             .put('/item/prueba1/1/100')  
@@ -77,6 +79,7 @@ describe("Añadimos nuevo item (PUT)", function(){
 });
 
 describe("Realizamos consultas (GET)", function(){
+    this.timeout(5000);
     it('Debería devolver los items', function(done){
         request(app)
             .get('/item')
