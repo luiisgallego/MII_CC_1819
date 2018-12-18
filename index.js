@@ -63,9 +63,13 @@ var itemsBD = mongoose.model('items', itemsSchema); // Exportar para test
  *    GET: Devolver status OK
  */
 app.get('/', function(request, response){
+
     // Mostramos status OK
     respuesta = { "status" : "OK" };
     response.status(200).type('json').send(respuesta);
+    
+    var txtLog = 'GET / desde IP' + request.connection.remoteAddress + ' con status ';
+    logger.info(txtLog + 200);
 });
 
 /*  "/item/:nombre/:cantidad/:precio"
@@ -74,6 +78,7 @@ app.get('/', function(request, response){
  */
 app.put('/item/:nombre/:cantidad/:precio', function(request, response){
     var nuevoItem = new items(request.params.nombre, request.params.cantidad, request.params.precio);
+    var txtLog = 'PUT /item/:nombre/:cantidad/:precio desde IP' + request.connection.remoteAddress + ' con status ';
 
     var nuevoItemBD = new itemsBD({
         ID: 'ID_' + nuevoItem.nombre,
@@ -83,15 +88,24 @@ app.put('/item/:nombre/:cantidad/:precio', function(request, response){
     });
     
     // Comprobamos si el item existe
-    itemsBD.find({ ID: nuevoItem.ID }, function(err,res) {
+    itemsBD.find({ ID: nuevoItem.ID }, function(err,res) {        
 
-        if(err || res.length != 0) response.status(404).type('json').send({ txt: "Error al insertar ITEM"});         // Error BD
+        if(err || res.length != 0) {
+            response.status(404).type('json').send({ txt: "Error al insertar ITEM"});         // Error BD
+            logger.info(txtLog + 404);
+        }
         else {      
             // Si no existe, lo creamos
             var resp;
             itemsBD.create(nuevoItemBD, function(err,res){
-                if(err) response.status(404).type('json').send();   // Error BD
-                else response.status(200).type('json').send(res);   // Item insertado                  
+                if(err) {
+                    response.status(404).type('json').send();   // Error BD
+                    logger.info(txtLog + 404);
+                }
+                else {
+                    response.status(200).type('json').send(res);   // Item insertado 
+                    logger.info(txtLog + 200);
+                }                 
             });
         }
     });
@@ -139,12 +153,19 @@ app.get('/item/:ID', function(request, response){
 // Borramos según ID
 app.delete('/item/:ID', function(request, response){      
     var id = request.params.ID;
+    var txtLog = 'DELETE /item/:ID desde IP ' + request.connection.remoteAddress + ' con status ';
 
     // QUE DEVUELE SI EL ITEM NO EXISTE?
     itemsBD.deleteOne({ ID: id }, function(err, res){
-        if(err) response.status(404).type('json').send();   // Error BD
-        else response.status(200).type('json').send();      // Item borrado 
-    });
+        if(err) {
+            response.status(404).type('json').send();   // Error BD
+            logger.info(txtLog + 404);
+        }
+        else {
+            response.status(200).type('json').send();      // Item borrado 
+            logger.info(txtLog + 200);
+        }
+    });    
 });
 
 // Lanzamos la aplicacion
