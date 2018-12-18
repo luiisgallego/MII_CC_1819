@@ -78,7 +78,7 @@ app.get('/', function(request, response){
  */
 app.put('/item/:nombre/:cantidad/:precio', function(request, response){
     var nuevoItem = new items(request.params.nombre, request.params.cantidad, request.params.precio);
-    var txtLog = 'PUT /item/:nombre/:cantidad/:precio desde IP' + request.connection.remoteAddress + ' con status ';
+    var txtLog = 'PUT /item/:nombre/:cantidad/:precio desde IP ' + request.connection.remoteAddress + ' con status ';
 
     var nuevoItemBD = new itemsBD({
         ID: 'ID_' + nuevoItem.nombre,
@@ -113,7 +113,7 @@ app.put('/item/:nombre/:cantidad/:precio', function(request, response){
 
 app.post('/item/:nombre/:cantidad/:precio', function(request, response){
     var existe = false;    
-    var txtLog = 'POST /item/:nombre/:cantidad/:precio desde IP' + request.connection.remoteAddress + ' con status ';
+    var txtLog = 'POST /item/:nombre/:cantidad/:precio desde IP ' + request.connection.remoteAddress + ' con status ';
 
     var itemUpdate = {
         nombre: request.params.nombre,
@@ -137,7 +137,7 @@ app.post('/item/:nombre/:cantidad/:precio', function(request, response){
  *    GET: Mostrar todos los items.
  */
 app.get('/item', function(request, response){
-    var txtLog = 'GET /item desde IP' + request.connection.remoteAddress + ' con status ';
+    var txtLog = 'GET /item desde IP ' + request.connection.remoteAddress + ' con status ';
 
    itemsBD.find({}, function(err, res){
         if(err || res.length == 0) {
@@ -157,7 +157,7 @@ app.get('/item', function(request, response){
  */
 app.get('/item/:ID', function(request, response){
     var identificador = request.params.ID;
-    var txtLog = 'GET /item/:ID desde IP' + request.connection.remoteAddress + ' con status ';
+    var txtLog = 'GET /item/:ID desde IP ' + request.connection.remoteAddress + ' con status ';
     
     itemsBD.find({ ID: identificador }, function(err, res){
         if(err || res.length == 0) {
