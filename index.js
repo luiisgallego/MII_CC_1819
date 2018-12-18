@@ -1,10 +1,12 @@
 /****************************   APP    *****************************/
 
 // Creamos las dependencias
-var express = require('express');
+var express = require('express');       // Aplicacion Web
+var mongoose = require('mongoose');     // BD
 var bodyParser = require("body-parser");
-var mongoose = require('mongoose');
-var items = require("./items.js");
+const { createLogger, format, transports } = require('winston'); // LOGs
+const { combine, timestamp, label, printf } = format;           // Formateo de LOGs
+var items = require("./items.js");      // Index
 var app = express();
 
 // Variables globales
@@ -22,9 +24,28 @@ app.use(bodyParser.json());
 var uri_mlab = "mongodb://items:items1@ds044587.mlab.com:44587/items";
 var uri_localhost = "mongodb://localhost/itemsTest"
 var URI_mongo_mlab = uri_mlab || uri_localhost; 
+
 mongoose.connect(URI_mongo_mlab, { useNewUrlParser: true }, function (err, res) {
-    if(err) console.log('ERROR conectando a: ' + URI_mongo_mlab + '. ' + err);
-    else console.log ('BD conectada a: ' + URI_mongo_mlab);
+    if(err) logger.info('ERROR conectando a: ' + URI_mongo_mlab + '. ' + err);
+    else logger.info('BD conectada a: ' + URI_mongo_mlab);
+});
+
+// Creamos y configuramos el sistema de logs
+const formatTexto = printf(
+    info => { return `${info.timestamp} ${info.level}: ${info.message}`; 
+}); 
+const formatTimestamp = timestamp({ format: 'YYYY-MM-DD HH:mm:ss' });
+
+const logger = createLogger({
+    level: 'info',
+    format: combine(
+        formatTimestamp,
+        formatTexto      
+    ),
+    transports: [
+        new transports.File({ filename: 'info.log' }),
+        new transports.Console(),
+    ]
 });
 
 // Creamos y enlazamos el modelo de la BD
@@ -129,7 +150,7 @@ app.delete('/item/:ID', function(request, response){
 // Lanzamos la aplicacion
 if(!module.parent){ 
     app.listen(app.get('puerto'), server_ip_address, function() {
-        console.log("Items app corriendo en " + server_ip_address + ":" + app.get('puerto'));
+        logger.info("Items app corriendo en " + server_ip_address + ":" + app.get('puerto'));        
     });
 }
 
