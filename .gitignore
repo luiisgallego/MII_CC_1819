@@ -1,4 +1,3 @@
-
 *.lib-cov
 *.seed
 *.log
@@ -13,6 +12,7 @@
 aux.txt
 node_modules
 provision/playbook.retry
+package-lock.json
 *~
 *.#
 **/.DS_Store
