@@ -13,10 +13,9 @@
         pkg: git 
         state: present
     - name: Clonar repo.
-      become: false
       git:
         repo: https://github.com/luiisgallego/MII_CC_1819.git
-        dest: MII_CC_1819
+        dest: ./MII_CC_1819
     - name: Install build-essential.
       apt: 
         pkg: build-essential
@@ -27,10 +26,8 @@
       apt: 
         pkg: nodejs 
         state: present
-    - name: Cambiamos directorio.
-      raw: cd MII_CC_1819
     - name: Instalar dependencias proyecto.
-      shell: sudo npm install    
+      raw: cd MII_CC_1819; npm install
     - name: Instalar process manager.
       npm:
         name: pm2
