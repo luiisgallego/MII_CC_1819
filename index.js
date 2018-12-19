@@ -68,7 +68,7 @@ app.get('/', function(request, response){
     respuesta = { "status" : "OK" };
     response.status(200).type('json').send(respuesta);
     
-    var txtLog = 'GET / desde IP' + request.connection.remoteAddress + ' con status ';
+    var txtLog = 'GET / desde IP ' + request.connection.remoteAddress + ' con status ';
     logger.info(txtLog + 200);
 });
 
@@ -111,8 +111,7 @@ app.put('/item/:nombre/:cantidad/:precio', function(request, response){
     });
 });
 
-app.post('/item/:nombre/:cantidad/:precio', function(request, response){
-    var existe = false;    
+app.post('/item/:nombre/:cantidad/:precio', function(request, response){  
     var txtLog = 'POST /item/:nombre/:cantidad/:precio desde IP ' + request.connection.remoteAddress + ' con status ';
 
     var itemUpdate = {
@@ -176,7 +175,6 @@ app.delete('/item/:ID', function(request, response){
     var id = request.params.ID;
     var txtLog = 'DELETE /item/:ID desde IP ' + request.connection.remoteAddress + ' con status ';
 
-    // QUE DEVUELE SI EL ITEM NO EXISTE?
     itemsBD.deleteOne({ ID: id }, function(err, res){
         if(err) {
             response.status(404).type('json').send();        // Error BD
