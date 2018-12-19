@@ -13,7 +13,7 @@ aux.txt
 node_modules
 provision/playbook.retry
 package-lock.json
-provision/salida.txt
+provision/salidaAcopio.txt
 *~
 *.#
 **/.DS_Store
