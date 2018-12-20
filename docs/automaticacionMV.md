@@ -8,22 +8,22 @@ Para ello, primeramente elegiremos un sistema cloud de los que encontramos en el
 
 ## Sistema Cloud
 
-El sistema cloud elegido ha sido Azure. Teníamos la posibilidad de trabajar también con otros como el proporcionado por Google o Amazon por ejemplo, pero finalmente nos decantamos por este por una razón básica, hay avances realizados para hitos siguientes, Vagrant, para el que ya se ha realizado una aproximación a dicho sistema Cloud. Además también fue utilizado anteriormente, y la falta de tiempo en general no nos permite explorar ahora otra opción como la de Google.
+El sistema cloud elegido ha sido Azure. Teníamos la posibilidad de trabajar también con otros como el proporcionado por Google o Amazon por ejemplo, pero finalmente nos decantamos por este por una razón básica, hay avances realizados para hitos siguientes, Vagrant, para el que ya se ha realizado una aproximación con dicho sistema Cloud. Además también fue utilizado anteriormente, y la falta de tiempo en general no nos permite explorar ahora otra opción como la de Google.
 
 Para poder hacer uso de su cliente tan solo tenemos que hacer una instalación rápida por terminal y hacer login correctamente tal y como podemos ver [aquí](https://docs.microsoft.com/es-es/cli/azure/install-azure-cli-macos?view=azure-cli-latest).
 
 ## Región
 
-Como podemos ver en el siguiente [enlace](https://azure.microsoft.com/es-es/global-infrastructure/regions/), encontramos diferentes regiones proporcionadas por *Azure*, aunque algunas no están disponibles. Para realizr un filtrado inicial vamos a utilizar [Azure Speed](https://azurespeedtest.azurewebsites.net/), en el que examinaremos la latencia de las regiones y nos quedaremos con las 3 mejores, para un posterior análisis. Tras un rato analizando, el resultado es el siguiente:
+Como podemos ver en el siguiente [enlace](https://azure.microsoft.com/es-es/global-infrastructure/regions/), encontramos diferentes regiones proporcionadas por *Azure*, aunque algunas no están disponibles. Para realizar un filtrado inicial vamos a utilizar [Azure Speed](https://azurespeedtest.azurewebsites.net/), en el que examinaremos la latencia de las regiones y nos quedaremos con las 3 mejores, para un posterior análisis. Tras un rato analizando, el resultado es el siguiente:
 
 ![Azure Speed 2.0](images/azureSpeed.png)
 
-Una vez realizado este primer filtrado, las regiones que van a ser analizadas son_
+Una vez realizado este primer filtrado, las regiones que van a ser analizadas son:
 - West UK
 - France Central
 - South UK
 
-Ahora, vamos a crearnos un grupo de recursos para cada región, con su respectiva maquina virtual. Para que el test sea igual para cada región, vamos a buscar primero una imagen que esté disponible en ambas regiones. Para ajustar este filtrado lo restringiremos a un publisher concreto, Canonical.
+Ahora, vamos a crearnos un grupo de recursos para cada región, con su respectiva máquina virtual. Para que el test sea igual para cada región, vamos a buscar primero una imagen que esté disponible en ambas regiones. Para ajustar este filtrado lo restringiremos a un publisher concreto, Canonical.
 ![imagenesRegiones](images/imagenesRegiones.png)
 
 Como podemos ver, UbuntuServer:16.04 será la imagen seleccionada para estos test iniciales. Además, mediremos lo que tarda cada grupo de recursos con su máquina en crearse mediante un script provisional.
