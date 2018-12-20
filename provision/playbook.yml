@@ -2,6 +2,8 @@
 - hosts: all
   become: yes
   gather_facts: False
+  vars:
+    remote_user: luis
 
   tasks:
     - name: Update.
