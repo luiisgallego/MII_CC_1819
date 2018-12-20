@@ -79,7 +79,7 @@ Para el aprovisionamiento usando *Ansible* y documentación detallada, podemos c
 
 MV2: 51.140.14.158
 
-Para la realización de la automatización de nuestro proyecto en un sistema cloud se ha creado un script. Este hace uso del cliente de líneas de órdenes de *Azure*, sistema cloud elegido, y nos proporciona una máquina virtual totalemente lista para provisionar con *Ansible* y disponer de nuestro proyecto completamente funcional. 
+Para la realización de la automatización de nuestro proyecto en un sistema Cloud se ha creado un script. Este hace uso del cliente de líneas de órdenes de *Azure*, sistema Cloud elegido, y nos proporciona una máquina virtual totalmente lista para provisionar con *Ansible* y disponer de nuestro proyecto completamente funcional. 
 
 Todo el proceso seguido para su realización lo podemos encontrar [aquí](https://github.com/luiisgallego/MII_CC_1819/blob/master/docs/automaticacionMV.md).
 
