@@ -20,6 +20,7 @@ Módulo para la gestión de contabilidad de una empresa.
     - [Back-end](#back_end)
 - [Despligue](#despligue)
 - [Provision](#provision)
+- [Automatización](#automatizacion)
 - [Licencia](#licencia)
 
 ### Descripción <a name="descripcion"></a>
@@ -73,6 +74,16 @@ Para el provisionamiento de la aplicación hemos optado por [Ansible](https://ww
 - La maquina virtual usa Ubuntu Server 14.04 LTS desplegada en Azure. Hemos elegido usar *Ubuntu* ya que en su versión mínima, server, permite utilizar todos los recursos hardware de una manera óptica y podría estar durante años sin presentar problemas. Su adquisición es barata y cuenta con una buena seguridad. En definitiva, contiene todo lo neceasario para desplegar un sistema que trabaje indefinidamente en la nube.
 
 Para el aprovisionamiento usando *Ansible* y documentación detallada, podemos consultar todos los detalles [aquí](https://github.com/luiisgallego/MII_CC_1819/blob/master/provision).
+
+# Automatización de la creación de máquinas virtuales desde línea de órdenes <a name="automatizacion"></a>
+
+MV2: 51.140.14.158
+
+Para la realización de la automatización de nuestro proyecto en un sistema cloud se ha creado un script. Este hace uso del cliente de líneas de órdenes de *Azure*, sistema cloud elegido, y nos proporciona una máquina virtual totalemente lista para provisionar con *Ansible* y disponer de nuestro proyecto completamente funcional. 
+
+Todo el proceso seguido para su realización lo podemos encontrar [aquí](https://github.com/luiisgallego/MII_CC_1819/blob/master/docs/automaticacionMV.md).
+
+Además, como avance del proyecto se ha creado un sistema de *logs*. Podemos encontrar toda la información [aquí](https://github.com/luiisgallego/MII_CC_1819/blob/master/docs/logs.md).
 
 ### Licencia <a name="licencia"></a>
 
