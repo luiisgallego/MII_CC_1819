@@ -2,13 +2,13 @@
 
 MV2: 51.140.14.158
 
-En el presente documento varios a exponer todos los pasos necesarios para poder crear instancias de máquinas virtuales en algún sistema cloud mediante el uso del cliente que nos proporcione para la línea de órdenes. 
+En el presente documento vamos a exponer todos los pasos necesarios para poder crear instancias de máquinas virtuales en algún sistema cloud mediante el uso del cliente que nos proporcione para la línea de órdenes. 
 
 Para ello, primeramente elegiremos un sistema cloud de los que encontramos en el mercado, y en función de ello, seleccionaremos la región para los recursos y las características que mejor se adapten a nuestro proyecto concreto.
 
 ## Sistema Cloud
 
-El sistema cloud elegido ha sido Azure. ¿PORQUE?
+El sistema cloud elegido ha sido Azure. Teníamos la posibilidad de trabajar también con otros como el proporcionado por Google o Amazon por ejemplo, pero finalmente nos decantamos por este por una razón básica, hay avances realizados para hitos siguientes, Vagrant, para el que ya se ha realizado una aproximación a dicho sistema Cloud. Además también fue utilizado anteriormente, y la falta de tiempo en general no nos permite explorar ahora otra opción como la de Google.
 
 Para poder hacer uso de su cliente tan solo tenemos que hacer una instalación rápida por terminal y hacer login correctamente tal y como podemos ver [aquí](https://docs.microsoft.com/es-es/cli/azure/install-azure-cli-macos?view=azure-cli-latest).
 
