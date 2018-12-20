@@ -1,6 +1,6 @@
 # Automatización de la creación de máquinas virtuales desde línea de órdenes
 
-MV2:
+MV2: 51.140.14.158
 
 En el presente documento varios a exponer todos los pasos necesarios para poder crear instancias de máquinas virtuales en algún sistema cloud mediante el uso del cliente que nos proporcione para la línea de órdenes. 
 
@@ -45,7 +45,7 @@ En función de los resultados, tomando como especialmente relevante la tasa de r
 En general, cualquier distribución de *Linux* funciona bien con *Node.js*. Hay una denominada [Node-os](https://node-os.com/) pero no he encontrado una imagen de dicha distribución en las regiones más optimas para mi proyecto, por lo que vamos a presentar un test como el del apartado anterior para *Debian*.
 
 | Imagen |  Tiempo creación (s) | Ancho de banda (KB/s) | Tasa de respuesta (ms/respuesta) |
-| -- | -- | -- | -- | -- |
+| -- | -- | -- | -- | 
 | UbuntuServer:16.04-LTS | 142 | 2.5 | 112.3 |
 | Debian:8 | 172 | 2.4 | 117.1 |
 
@@ -57,7 +57,7 @@ Como vemos, la imagen de Ubuntu obtiene mejores resultados por lo que será la u
 
 Como disco que utilizaremos usaremos el de mínimo tamaño posible, ya que el proyecto aún ocupa muy poco espacio y además, como hacemos uso de almacén de base de datos *mlab*, apenas necesitaremos más espacio en el disco. Siendo este tamaño el denominado *A1_v2*.
 
-### Script de aprovisionamiento
+### Script de automatización
 
 Para la realización del despliegue de la máquina virtual en Azure hay que seguir 3 pasos principales:
 
@@ -67,4 +67,4 @@ Para la realización del despliegue de la máquina virtual en Azure hay que segu
 
 Para definir todo lo anterior en nuestro script, nos hemos basado en la guía que el propio azure proporciona. Esta la podemos encontrar [aquí](https://docs.microsoft.com/es-es/azure/virtual-machines/windows/quick-create-cli). Comentar, que como podrá ver en el script, se han añadido variables para definir el nombre de cada recurso. Además, se han añadido dos para poder medir el tiempo que tarda en desplegarse la máquina.
 
-Finalmente, una vez ejecutado el script, ya tendremos nuestra máquina lista para terminar el aprovisionamiento mediante *Ansible*. A este le tendremos que indicar la IP de esta máquina y dejará listo nuestro proyecto para ejecutarlo.
+Finalmente, una vez ejecutado el script, ya tendremos nuestra máquina lista para terminar el aprovisionamiento mediante *Ansible*. A este le tendremos que indicar la IP de esta máquina y dejará listo nuestro proyecto para ejecutarlo. Como última anotación, se ha añadido al playbook la variable *remote_user*, necesaria para que *Ansible* conozca cual es el usuario para la conexión *ssh*.
