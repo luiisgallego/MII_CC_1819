@@ -14,6 +14,8 @@ node_modules
 provision/playbook.retry
 package-lock.json
 provision/salidaAcopio.txt
+orquestacion/.vagrant
+orquestacion/datosJson
 *~
 *.#
 **/.DS_Store
