@@ -3,7 +3,7 @@
   become: yes
   gather_facts: False
   vars:
-    remote_user: luis
+    remote_user: vagrant
 
   tasks:
     - name: Update.
