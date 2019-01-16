@@ -23,11 +23,12 @@ app.use(bodyParser.json());
 // Conectamos la BD
 var uri_mlab = "mongodb://items:items1@ds044587.mlab.com:44587/items";
 var uri_localhost = "mongodb://localhost/itemsTest"
-var URI_mongo_mlab = uri_mlab || uri_localhost; 
+var uri_new_localhost = "mongodb://localhost:27017/Db";
+//var URI_mongo_mlab = uri_mlab || uri_localhost; 
 
-mongoose.connect(URI_mongo_mlab, { useNewUrlParser: true }, function (err, res) {
-    if(err) logger.info('ERROR conectando a: ' + URI_mongo_mlab + '. ' + err);
-    else logger.info('BD conectada a: ' + URI_mongo_mlab);
+mongoose.connect(uri_new_localhost, { useNewUrlParser: true }, function (err, res) {
+    if(err) logger.info('ERROR conectando a: ' + uri_new_localhost + '. ' + err);
+    else logger.info('BD conectada a: ' + uri_new_localhost);
 });
 
 // Creamos y configuramos el sistema de logs

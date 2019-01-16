@@ -16,6 +16,7 @@ package-lock.json
 provision/salidaAcopio.txt
 orquestacion/.vagrant
 orquestacion/datosJson
+orquestacion/vagrantfile_v2
 provision/ansible_hostsPREVIO.txt
 *~
 *.#
