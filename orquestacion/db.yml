@@ -12,3 +12,7 @@
       raw: test -e /usr/bin/python || apt install -y python-minimal
     - name: Instalar MongoDB
       apt: name=mongodb state=present
+    - name: Crear carpeta BD
+      shell: sudo mkdir -p /data/db
+    - name: Damos permisos
+      shell: sudo chmod 777 /data/db
