@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 //var uri_azure = "mongodb://10.0.0.5:27017/Db"
 //var URI_mongo_mlab = uri_mlab || uri_localhost; 
 
-var ipDB = process.env.ipDB;
+var ipDB = process.env.ipDB || '10.0.0.5';
 var uriDB = "mongodb://" + ipDB + ":27017/Db";
 
 mongoose.connect(uriDB, { useNewUrlParser: true }, function (err, res) {
