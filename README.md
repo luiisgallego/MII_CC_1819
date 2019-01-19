@@ -88,7 +88,7 @@ Además, como avance del proyecto se ha creado un sistema de *logs*. Podemos enc
 
 # Orquestación de máquinas virtuales <a name="orquestacion"></a>
 
-Despliegue Vagrant:
+Despliegue Vagrant: 52.151.71.89
 
 Para la realización de la orquestación de las máquinas virtuales se ha hecho uso de la herramienta *Vagrant*, dicha herramienta hace uso de *Ansible* para las tareas de provisión. Esto nos permite tener nuestro proyecto completamente disponible y funcional en tan solo cuestión de minutos. Además, como avance de proyecto, se ha comenzado a usar la base de datos *mongodb* de manera local.
 

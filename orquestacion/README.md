@@ -68,7 +68,11 @@ Como avance del proyecto se ha instalado la base de datos *mongodb* localmente e
 
 Esto nos ha llevado a buscar una imagen de máquina virtual en Azure que contenga mongodb instalado, evitando así tener que realizar una provisión propia para la segunda máquina. Pero nos hemos encontrado que todas las imagenes que hemos localizado eran de pago, por tanto en el proyecto se ha tenido que realizar la provisión en una máquina con sistema operativo *Ubuntu* como anteriormente se ha comentado. 
 
-## Comprobación de aprovisión a ...
+## Comprobación de aprovisión a un compañero
 
-## Comprobación de aprovisión de ...
+Podemos ver el proceso realizado y el resultado [aquí](https://github.com/Gecofer/proyecto-CC/blob/master/docs/comprobacionAprovision.md).
+
+## Comprobación de aprovisión de un compañero
+
+Podemos ver el proceso realizado y el resultado [aquí](https://github.com/luiisgallego/MII_CC_1819/blob/master/docs/comprobacionHito5.md).
 
