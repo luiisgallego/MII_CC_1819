@@ -34,12 +34,37 @@ vagrant up --no-parallel
 
 ## Prueba de despliegue
 
+Por último vamos a proporcionar un ejemplo de despligue, provisión y prueba de nuestra aplicación mediante diferentes capturas, a modo de comprobación del correcto funcionamiento.
+
+En las primeras capturas vamos a ver como se ejecuta el *Vagrantfile* y se realiza tanto el despligue como provisión de las dos máquinas virtuales.
+
+![maquina1](../docs/images/orquestacion/1_maquina1.png)
+![1_maquina1_provision](../docs/images/orquestacion/1_maquina1_provision.png)
+![3_maquina2](../docs/images/orquestacion/3_maquina2.png)
+
+Ya hemos levantado ambas máquinas desde nuestra máquina anfitriona y están listas para accerder a ellas mediante *ssh*. Por tanto, primero accedemos a la que contiene la base de datos y ejecutamos el demonio *mongodb* para que esté listo para escuchar peticiones.
+
+![4_mongoInicio](../docs/images/orquestacion/4_mongoInicio.png)
+
+Como vemos en la última línea, está listo para escuchar peticiones por el puerto 27017. Arrancamos la máquina con la aplicación y ejectuamos dicha aplicación. 
+
+![4_appArrancada](../docs/images/orquestacion/4_appArrancada.png)
+
+En estos momentos ya estamos listos para hacer uso al completo de nuestra aplicación. Ahora, desde nuestra máquina anfitriona realizaremos un *put* mediante la ip pública de la máquina que contiene la aplicación. También desde el navegador comprobaremos que nos llega correctamente el *status ok*.
+
+![5_pruebaLocal](../docs/images/orquestacion/5_pruebaLocal.png)
+![6_pruebaNavegador](../docs/images/orquestacion/6_pruebaNavegador.png)
+
+Por último ya solo nos queda por comprobar que tanto en la aplicación como en la base de datos todo está funcionando correctamente, esto podemos hacerlo mediante los logs de ambos, como mostraremos más abajo. Finalmente presentamos una captura de la ejecución de los tests.
+
+![8_logApp](../docs/images/orquestacion/8_logApp.png)
+![9_logDB](../docs/images/orquestacion/9_logDB.png)
+![10_test](../docs/images/orquestacion/10_test.png)
 
 
-# AVANCE DEL PROYECTO
+## Avance del proyecto
 
-Mongo localmente.
-https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
+Como avance del proyecto se ha instalado la base de datos *mongodb* localmente en nuestro proyecto, prescindiendo de *mlab*.
 
-Esto nos ha llevado a buscar una imagen de máquina virtual en Azure que contenga mongodb instalado, evitando así tener que realizar una provisión propia para la segunda máquina. Además de distribuir los microservicios correctamente. Nada.... de pago. Hay que provisionar mediante ansible.
+Esto nos ha llevado a buscar una imagen de máquina virtual en Azure que contenga mongodb instalado, evitando así tener que realizar una provisión propia para la segunda máquina. Pero nos hemos encontrado que todas las imagenes que hemos localizado eran de pago, por tanto en el proyecto se ha tenido que realizar la provisión en una máquina con sistema operativo *Ubuntu* como anteriormente se ha comentado. 
 
