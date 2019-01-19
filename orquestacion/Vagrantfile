@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "maquina1" do |maquina1|    
     maquina1.vm.host_name = "maquina1"
     
-    maquina1.vm.provider "azure" do |az, override|                  # Parametros para AZURE  
+    maquina1.vm.provider "azure" do |az, override|                    # Parametros para AZURE  
       # Variables de entorno
       az.tenant_id = ENV['AZURE_TENANT_ID'] 
       az.client_id = ENV['AZURE_CLIENT_ID'] 
@@ -23,23 +23,23 @@ Vagrant.configure("2") do |config|
   
       # Datos para la MV
       az.vm_image_urn = 'Canonical:UbuntuServer:16.04-LTS:latest'     # Imagen MV
-      az.vm_name = 'app'                                       # Nombre MV
+      az.vm_name = 'ccappitems'                                       # Nombre MV
       az.vm_size = 'Standard_B1s'                                     # Tamaño MV
-      az.resource_group_name = 'hito5'                      # Grupo de recursos
-      #az.location = ''                                               # Azure location to build the VM -- defaults to westus
+      az.resource_group_name = 'cchito5'                              # Grupo de recursos
+      az.location = 'uksouth'                                         # Azure location to build the VM 
       az.tcp_endpoints = [80,27017]                                   # Abrimos el puerto 80 (HTTP) y 27017 (MongoDB)
       az.virtual_network_name = "privateNetwork"                      # Nombre del recurso de red virtual
     end
 
-    maquina1.vm.provision "ansible" do |ansible|                    # Parametros para Ansible
+    maquina1.vm.provision "ansible" do |ansible|                      # Parametros para Ansible
       ansible.playbook = "aplicacion.yml"
     end
   end
   
-  config.vm.define "maquina2" do |maquina2|                                       # MONGODB
+  config.vm.define "maquina2" do |maquina2|                           # MONGODB
     maquina2.vm.host_name = "maquina2"
     
-    maquina2.vm.provider "azure" do |az, override|                          # Parametros para AZURE        
+    maquina2.vm.provider "azure" do |az, override|                    # Parametros para AZURE        
       # Variables de entorno
       az.tenant_id = ENV['AZURE_TENANT_ID'] 
       az.client_id = ENV['AZURE_CLIENT_ID'] 
@@ -48,18 +48,19 @@ Vagrant.configure("2") do |config|
   
       # Datos para la MV
       az.vm_image_urn = 'Canonical:UbuntuServer:16.04-LTS:latest'     # Imagen MV
-      az.vm_name = 'dbmongo'                                               # Nombre MV
+      az.vm_name = 'ccdbmongo'                                        # Nombre MV
       az.vm_size = 'Standard_B1s'                                     # Tamaño MV
-      az.resource_group_name = 'hito5'                              # Grupo de recursos
-      #az.location = ''                                               # Azure location to build the VM -- defaults to westus
-      az.tcp_endpoints = [80,27017]                                      # Abrimos el puerto 27017 (MongoDB)
+      az.resource_group_name = 'cchito5'                              # Grupo de recursos
+      az.location = 'uksouth'                                         # Azure location to build the VM 
+      az.tcp_endpoints = [80,27017]                                   # Abrimos el puerto 27017 (MongoDB)
       az.virtual_network_name = "privateNetwork"                      # Nombre del recurso de red virtual
     end
 
-    maquina2.vm.provision "ansible" do |ansible|                            # Parametros para Ansible
+    maquina2.vm.provision "ansible" do |ansible|                      # Parametros para Ansible
       ansible.playbook = "db.yml"
     end
 
+    # Ajustamos la configuracion de la maquina con mongodb
     maquina2.vm.provision "file", source: "mongodb.conf", destination: "~/mongodb.conf"
     maquina2.vm.provision "shell" do |s|
       s.inline = "cp ./mongodb.conf /etc/mongodb.conf; sudo service mongodb restart"
