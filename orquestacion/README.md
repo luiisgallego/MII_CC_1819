@@ -2,7 +2,7 @@
 
 ## Instalación y primeros pasos
 
-Como viene siendo costumbre en la realización de cada avance en el desarrollo y despliegue del proyecto, los primeros pasos se han realizado en el repositorio de ejercicios. En esta ocasión podemos encontrar las instrucciones neceasarias para su instalación y primeros pasos en una máquina anfitriona con sistema operativo Mac OS pinchando [aquí](https://github.com/luiisgallego/MII_CC_EJERCICIOS_1819/tree/master/Tema5).
+Como viene siendo costumbre en la realización de cada avance en el desarrollo y despliegue del proyecto, los primeros pasos se han realizado en el repositorio de ejercicios. En esta ocasión podemos encontrar las instrucciones necesarias para su instalación y primeros pasos en una máquina anfitriona con sistema operativo Mac OS pinchando [aquí](https://github.com/luiisgallego/MII_CC_EJERCICIOS_1819/tree/master/Tema5).
 
 Una vez que nuestra máquina está correctamente configurada para el uso de Vagrant y su despliegue en máquinas virtuales de Azure, comenzamos la construcción del archivo principal.
 
@@ -22,7 +22,7 @@ La especificación de cada parámetro está perfectamente explicado en el anteri
 - En esta ocasión se han abierto dos puertos necesarios, el 80 para hacer uso de la aplicación y el 27017 para poder hacer uso de la base de datos mongodb. Esto se ha realizado con el parametro "tcp_endpoints".
 - Mediante "virtual_network_name" se ha creado una red virtual privada entre las dos máquinas para poder establecer la conexión entre la aplicación y la base de datos mediante IPs privadas.
 
-Es de especial mención los ajustes de configuración que se han en la segunda máquina (mongodb) dentro del *Vagrantfile*. Con ellos se ha buscado tener dicha máquina completamente operativa una vez que accedamos a ella. Para ello en la segunda provisión se ha copiado dentro de la máquina virtual el archivo de configuración necesario, y en la tercera provisión se ha sustituido en la localización correcta. Al tratarse de la carpeta */etc* ha sido necesario permisos de superusuario.
+Es de especial mención los ajustes de configuración que se han establecido en la segunda máquina (mongodb) dentro del *Vagrantfile*. Con ellos se ha buscado tener dicha máquina completamente operativa una vez que accedamos a ella. Para ello en la segunda provisión se ha copiado dentro de la máquina virtual el archivo de configuración necesario, y en la tercera provisión se ha sustituido dicho archivo en la localización correcta. Al tratarse de la carpeta */etc* ha sido necesario permisos de superusuario.
 
 Comentar también que se ha definido un *playbook* específico para la provisión de la máquina con base de datos. En este se ha definido las tareas necesarias para tener *mongodb* disponible en la máquina. Como puede verse, difiere casi al completo del playbook de la aplicación, algo obvio ya que los requisitos de ambas máquinas son totalmente distintos. 
 
@@ -39,10 +39,10 @@ Por último vamos a proporcionar un ejemplo de despligue, provisión y prueba de
 En las primeras capturas vamos a ver como se ejecuta el *Vagrantfile* y se realiza tanto el despligue como provisión de las dos máquinas virtuales.
 
 ![maquina1](../docs/images/orquestacion/1_maquina1.png)
-![1_maquina1_provision](../docs/images/orquestacion/1_maquina1_provision.png)
+![2_maquina1_provision](../docs/images/orquestacion/2_maquina1_provision.png)
 ![3_maquina2](../docs/images/orquestacion/3_maquina2.png)
 
-Ya hemos levantado ambas máquinas desde nuestra máquina anfitriona y están listas para accerder a ellas mediante *ssh*. Por tanto, primero accedemos a la que contiene la base de datos y ejecutamos el demonio *mongodb* para que esté listo para escuchar peticiones.
+Ya hemos levantado ambas máquinas desde nuestra máquina anfitriona y están listas para acceder a ellas mediante *ssh*. Por tanto, primero accederemos a la que contiene la base de datos y ejecutamos el demonio *mongodb* para que esté listo para escuchar peticiones.
 
 ![4_mongoInicio](../docs/images/orquestacion/4_mongoInicio.png)
 
@@ -67,4 +67,8 @@ Por último ya solo nos queda por comprobar que tanto en la aplicación como en 
 Como avance del proyecto se ha instalado la base de datos *mongodb* localmente en nuestro proyecto, prescindiendo de *mlab*.
 
 Esto nos ha llevado a buscar una imagen de máquina virtual en Azure que contenga mongodb instalado, evitando así tener que realizar una provisión propia para la segunda máquina. Pero nos hemos encontrado que todas las imagenes que hemos localizado eran de pago, por tanto en el proyecto se ha tenido que realizar la provisión en una máquina con sistema operativo *Ubuntu* como anteriormente se ha comentado. 
+
+## Comprobación de aprovisión a ...
+
+## Comprobación de aprovisión de ...
 

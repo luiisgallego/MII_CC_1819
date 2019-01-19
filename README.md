@@ -90,7 +90,9 @@ Además, como avance del proyecto se ha creado un sistema de *logs*. Podemos enc
 
 Despliegue Vagrant:
 
-Todo el proceso seguido para su realización lo podemos encontrar [aquí](https://github.com/luiisgallego/MII_CC_1819/blob/master/docs/orquestacion.md).
+Para la realización de la orquestación de las máquinas virtuales se ha hecho uso de la herramienta *Vagrant*, dicha herramienta hace uso de *Ansible* para las tareas de provisión. Esto nos permite tener nuestro proyecto completamente disponible y funcional en tan solo cuestión de minutos. Además, como avance de proyecto, se ha comenzado a usar la base de datos *mongodb* de manera local.
+
+Todo el proceso seguido para su realización lo podemos encontrar [aquí](https://github.com/luiisgallego/MII_CC_1819/blob/master/orquestacion).
 
 ### Licencia <a name="licencia"></a>
 
