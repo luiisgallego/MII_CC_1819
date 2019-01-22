@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Conectamos la BD
-//var uri_mlab = "mongodb://items:items1@ds044587.mlab.com:44587/items";
+var uri_mlab = "mongodb://items:items1@ds044587.mlab.com:44587/items";
 //var uri_localhost = "mongodb://localhost/itemsTest"
 //var uri_new_localhost = "mongodb://localhost:27017/Db";
 //var uri_azure = "mongodb://10.0.0.5:27017/Db"
@@ -30,9 +30,9 @@ app.use(bodyParser.json());
 var ipDB = process.env.ipDB || '10.0.0.5';
 var uriDB = "mongodb://" + ipDB + ":27017/Db";
 
-mongoose.connect(uriDB, { useNewUrlParser: true }, function (err, res) {
-    if(err) logger.info('ERROR conectando a: ' + uriDB + '. ' + err);
-    else logger.info('BD conectada a: ' + uriDB);
+mongoose.connect(uri_mlab, { useNewUrlParser: true }, function (err, res) {
+    if(err) logger.info('ERROR conectando a: ' + uri_mlab + '. ' + err);
+    else logger.info('BD conectada a: ' + uri_mlab);
 });
 
 // Creamos y configuramos el sistema de logs
