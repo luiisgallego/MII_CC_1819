@@ -2,7 +2,7 @@
 FROM node:10-alpine  
 LABEL version="5.0" MAINTAINER="Luis Gallego <lgaq94@gmail.com>"
 # Directorio de trabajo
-WORKDIR /usr/src/app
+WORKDIR /items
 
 # Instalamos todas las dependencias
 COPY package.json ./
