@@ -5,7 +5,7 @@ node_js:
 services:
   - mongodb
 env:
+  - PASSMLAB=items1
   - ipDB=localhost
-  - passMlab=items1
 script:
   - npm test
