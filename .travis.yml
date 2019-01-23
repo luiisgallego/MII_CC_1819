@@ -6,6 +6,6 @@ services:
   - mongodb
 env:
   - PASSMLAB=items1
-  - ipDB=localhost
+  //- ipDB=localhost
 script:
   - npm test

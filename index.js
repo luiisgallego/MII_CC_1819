@@ -27,9 +27,8 @@ var uri_mlab = "mongodb://items:" + passMlab + "@ds044587.mlab.com:44587/items";
 //var uri_new_localhost = "mongodb://localhost:27017/Db";
 //var uri_azure = "mongodb://10.0.0.5:27017/Db"
 //var URI_mongo_mlab = uri_mlab || uri_localhost; 
-
-var ipDB = process.env.ipDB || '10.0.0.5';
-var uriDB = "mongodb://" + ipDB + ":27017/Db";
+//var ipDB = process.env.ipDB || '10.0.0.5';
+//var uriDB = "mongodb://" + ipDB + ":27017/Db";
 
 mongoose.connect(uri_mlab, { useNewUrlParser: true }, function (err, res) {
     if(err) logger.info('ERROR conectando a: ' + uri_mlab + '. ' + err);
