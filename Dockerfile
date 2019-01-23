@@ -1,6 +1,6 @@
 # Contenedor de origen
-FROM node:10-alpine                            
-MAINTAINER Luis Gallego <lgaq94@gmail.com>
+FROM node:10-alpine  
+LABEL version="5.0" MAINTAINER="Luis Gallego <lgaq94@gmail.com>"
 # Directorio de trabajo
 WORKDIR /usr/src/app
 
@@ -13,7 +13,8 @@ COPY ./items.js .
 COPY ./index.js .
 COPY ./test ./test
 
-# Escuchamos por el puerto 80
-EXPOSE 80
 # Arrancamos la aplicacion
 CMD [ "npm", "start" ]
+
+# Escuchamos por el puerto 80
+EXPOSE 80
