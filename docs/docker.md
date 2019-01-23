@@ -15,7 +15,8 @@ Una vez construido el *Dockerfile* podemos usar los siguientes comandos para int
 - Una vez que lo hemos comprobado, ya estamos listos para lanzar la aplicación. Este paso es importante en cuanto a los puertos para pod*er acceder. En nuestra *Dockerfile* hemos especificado mediante *EXPOSE* que la aplicación corra en el puerto 80, ahora para poder usar la aplicación de forma local mediante curl, tenemos que redirigir ese puerto a cualquiera que nosotros decidamos, por ejemplo,49160. Esto se hace con *-p*. Finalmente con *-d* indicamos la imagen que queremos ejecutar:
     ~~~
      docker run -p 49160:80 -d luiisgallego/nombreImagen
-     docker run --name nombreContenedorNEW -p 49160:80 -d luiisgallego/firstapp
+     docker run --name nombreContenedorNEW -p 49160:80 -d luiisgallego/nombreImagen
+     docker run --name nombreContenedorNEW -e VAR_ENTORNO=valor -p 49160:80 -d luiisgallego/nombreImagen
     ~~~
 - Ahora podemos ver que se está ejecutando bajo la instrucción que indicamos en el *Dockerfile* bajo *CMD*:
     ~~~
