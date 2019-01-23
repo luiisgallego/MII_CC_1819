@@ -32,7 +32,7 @@ Una vez construido el *Dockerfile* podemos usar los siguientes comandos para int
     ~~~
 - Podemos entrar dentro de la máquina, creando un contenedor y borrándolo en la misma orden, y ejecutar órdenes dentro de ella:
     ~~~
-     docker run --rm -it luiisgallego/firstapp sh
+    docker run --rm -it luiisgallego/firstapp sh
     ~~~
 
 Una vez que hemos creado la imagen e interactuado con el contenedor de forma local y hemos comprobado que funciona según lo previsto, podemos subir la imagen a *DockerHUB* para asi poder lanzarla en *Azure*, nuestro propósito final:
