@@ -101,7 +101,7 @@ Contenedor: http://51.140.115.45/
 
 DockerHub: https://hub.docker.com/r/luiisgallego/items
 
-La documentación completa del proceso seguido en el despliegue del contenedor mediante *Docker* la podemos encontrar [aquí](https://github.com/luiisgallego/MII_CC_1819/blob/master/docs/contenedores.md)
+La documentación completa del proceso seguido en el despliegue del contenedor mediante *Docker* la podemos encontrar [aquí](https://github.com/luiisgallego/MII_CC_1819/blob/master/docs/contenedores.md).
 
 ### Licencia <a name="licencia"></a>
 
