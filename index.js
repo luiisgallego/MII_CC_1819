@@ -21,8 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Conectamos la BD
-var passMlab = process.env.PASSMLAB;
-var uri_mlab = "mongodb://items:" + passMlab + "@ds044587.mlab.com:44587/items";
+var uri_mlab = "mongodb://items:items1@ds044587.mlab.com:44587/items";
 //var uri_localhost = "mongodb://localhost/itemsTest"
 //var uri_new_localhost = "mongodb://localhost:27017/Db";
 //var uri_azure = "mongodb://10.0.0.5:27017/Db"
