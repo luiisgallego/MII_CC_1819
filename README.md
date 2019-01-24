@@ -22,6 +22,7 @@ Módulo para la gestión de contabilidad de una empresa.
 - [Provision](#provision)
 - [Automatización](#automatizacion)
 - [Orquestacion](#orquestacion)
+- [Contenedores](#contenedores)
 - [Licencia](#licencia)
 
 ### Descripción <a name="descripcion"></a>
@@ -93,6 +94,14 @@ Despliegue Vagrant: 52.151.71.89
 Para la realización de la orquestación de las máquinas virtuales se ha hecho uso de la herramienta *Vagrant*, dicha herramienta hace uso de *Ansible* para las tareas de provisión. Esto nos permite tener nuestro proyecto completamente disponible y funcional en tan solo cuestión de minutos. Además, como avance de proyecto, se ha comenzado a usar la base de datos *mongodb* de manera local.
 
 Todo el proceso seguido para su realización lo podemos encontrar [aquí](https://github.com/luiisgallego/MII_CC_1819/blob/master/orquestacion).
+
+# Contenedores Docker <a name="contenedores"></a>
+
+Contenedor: http://51.140.115.45/
+
+DockerHub: https://hub.docker.com/r/luiisgallego/items
+
+La documentación completa del proceso seguido en el despliegue del contenedor mediante *Docker* la podemos encontrar [aquí](https://github.com/luiisgallego/MII_CC_1819/blob/master/docs/contenedores.md)
 
 ### Licencia <a name="licencia"></a>
 
