@@ -14,6 +14,27 @@ Posteriormente hemos mediante la instrucción *LABEL* a modo informativo la vers
 
 Una vez que nuestra imagen tiene todas las dependencias (Expres, Mongoose, Mocha, etc), podemos copiar los archivos mínimos para que nuestra aplicación funcione, incluso los test, esto se ha realizado mediante la instrucción *COPY* y haciendo uso del punto final establecemos que se copie en el directorio de trabajo creado previamente. Llegados a este punto ya estamos listos para ejecutar la aplicación, esto lo hacemos con la instrucción *CMD* a la que le indicamos la orden que venimos usando para lanzar la aplicación creada con *Node.js*. Como detalle importante, es necesario que podamos escuchar el puerto 80 exteriormente, esto lo conseguimos mediante *EXPOSE*. 
 
-## Ejemplo de construcción y uso
+## Comparativa y uso
 
+Una vez que nuestro *Dockerfile* estaba definido, pasamos a construir la imagen correspondiente. Como hemos comentado anteriormente, la primeras pruebas se realizaron con una imagen de *Node:10*. Una vez comprendida la filosofía de *Docker, comenzamos a buscar imágenes más ligeras, decant´ndonos por la ofrecida por *alpine*. Por tanto, en la siguiente imagen podemos ver la construcción de esta, y en la posterior una comparativa de pesos según la informacion que nos ofrece *docker images*. Como veremos, la diferencia es bastante evidente, por lo que la elección de esta segunda imagen era más que clara. 
 
+![2_despliegue2](images/docker/2_despliegue2.png)
+![3_comparacion](images/docker/3_comparacion.png)
+
+Tras la comparación, vamos a realizar una prueba de ejecución. Para ello nos crearemos un contenedor de la imagen alpine y comprobaremos que se está ejecutando según lo esperado.
+
+![4_comprobacionLocal](images/docker/4_comprobacionLocal.png)
+
+Ahora que sabemos que la aplicación está ejecutandose correctamente en el contenedor, podemos realizar un PUT y comprobar el resultado, por ejemplo, en el navegador.
+
+![5_comprobacionLocal2](images/docker/5_comprobacionLocal2.png)
+![6_comprobacionLocalNavegador](images/docker/6_comprobacionLocalNavegador.png)
+
+Tras las respectivas comprobaciones, ahora vamos a pasar a desplegar la imagen creada con nuestro *Dockerfile* a nuestro repositorio en *DockerHub*. El primer paso sería realizar un tag de la imagen, el cual no ha sido capturado. Finalmente, realizamos el push hacia el repositorio.
+
+![7_push](images/docker/7_push.png)
+![11_dockerHub](images/docker/11_dockerHub.png)
+
+Para completar el despliegue correctamente tan solo nos falta desplegarlo en algún servicio cloud, una vez más, usaremos *Azure*. En esta ocasión, por simplificación, hemos hecho de su interfaz web, creándonos un grupo de recursos propio mediante *Instancias de contenedores* para alojar el contenedor de nuestro *DockerHub*. Una vez desplegado en *Azure*, comprobamos su correcto funcionamiento culminando el hito al que nos enfrentamos.
+
+![10_comprobacionAzure2](images/docker/10_comprobacionAzure2.png)
