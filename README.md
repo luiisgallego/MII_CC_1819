@@ -97,7 +97,7 @@ Todo el proceso seguido para su realización lo podemos encontrar [aquí](https:
 
 # Contenedores Docker <a name="contenedores"></a>
 
-Contenedor: http://51.140.115.45/
+Contenedor: http://51.140.115.45/status
 
 DockerHub: https://hub.docker.com/r/luiisgallego/items
 

@@ -76,6 +76,19 @@ app.get('/', function(request, response){
     logger.info(txtLog + 200);
 });
 
+/*  "/"
+ *    GET: Devolver status OK
+ */
+app.get('/status', function(request, response){
+
+    // Mostramos status OK
+    respuesta = { "status" : "OK" };
+    response.status(200).type('json').send(respuesta);
+    
+    var txtLog = 'GET / desde IP ' + request.connection.remoteAddress + ' con status ';
+    logger.info(txtLog + 200);
+});
+
 /*  "/item/:nombre/:cantidad/:precio"
  *    PUT: Crear nuevo item.
  *    POST: Actualizar item por nombre.
