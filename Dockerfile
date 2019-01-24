@@ -13,9 +13,6 @@ COPY ./items.js .
 COPY ./index.js .
 COPY ./test ./test
 
-# Variable de entornio para mlab
-ENV PASSMLAB /items/index.js
-
 # Arrancamos la aplicacion
 CMD [ "npm", "start" ]
 
